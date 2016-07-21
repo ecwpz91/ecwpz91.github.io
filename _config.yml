@@ -25,3 +25,9 @@ exclude:
   - grunt
   - js
   - less
+  - node_modules
+  - script
+  - Gruntfile.js
+  - LICENSE
+  - package.json
+  - README.md
