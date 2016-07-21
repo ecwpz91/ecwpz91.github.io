@@ -27,8 +27,7 @@ script: ./script/cibuild
 # regular expression (above).
 branches:
   only:
-    - gh-pages      # test the gh-pages branch
-    - /pages-(.*)/  # test every branch which starts with "pages-"
+    - master
 
 # Nokogiri, used to parse HTML files in your compiled site, comes bundled with libraries
 # which it must compile each time it is installed. Luckily, you can dramatically decrease
