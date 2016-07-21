@@ -2,4 +2,4 @@
 set -e # halt script on error
 
 bundle exec jekyll build
-bundle exec htmlproofer --url-ignore "http://openshift.example.com:3000/demo/openshiftexamples-nodemongo" ./_site
+bundle exec htmlproofer --url-ignore "#" ./_site

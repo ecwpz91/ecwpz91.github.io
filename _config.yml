@@ -28,6 +28,8 @@ exclude:
   - less
   - node_modules
   - script
+  - Gemfile
+  - Gemfile.lock
   - Gruntfile.js
   - LICENSE
   - package.json
