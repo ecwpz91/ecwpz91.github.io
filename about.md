@@ -4,12 +4,10 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+**Michael Surbey** is a Cloud Solutions Architect at Red Hat Red Hat, Inc.
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jglovier" %} /
-[jekyll-new](https://github.com/jglovier/jekyll-new)
+I've developed this blog in order to contribute, document, and share my daily adventures/endeavors with others.
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+My interests include athletics, finance, tutoring, and research on a variety of technical topics such as Docker containers, CI/CD pipleline implementation, coding, database management systems, mobile app development, networking, and security.
+
+If you'd like to check out my recent bookmarks, click [here](http://bit.ly/2afSCMI).
