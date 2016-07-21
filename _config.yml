@@ -13,7 +13,7 @@ description: > # this means to ignore newlines until "baseurl:"
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # the base hostname & protocol for your site
+url: "https://ecwpz91.github.io/" # the base hostname & protocol for your site
 twitter_username: ecwpz91
 github_username:  ecwpz91
 
@@ -28,6 +28,7 @@ exclude:
   - less
   - node_modules
   - script
+  - _mdwriter.cson
   - Gemfile
   - Gemfile.lock
   - Gruntfile.js
