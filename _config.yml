@@ -28,6 +28,7 @@ exclude:
   - less
   - node_modules
   - script
+  - vendor
   - _mdwriter.cson
   - Gemfile
   - Gemfile.lock
