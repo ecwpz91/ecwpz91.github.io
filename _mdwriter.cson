@@ -2,7 +2,7 @@
 siteEngine: "jekyll"
 
 # absolute path to the root directory of your blog
-siteLocalDir: "/home/msurbey/workspace/github.com/ecwpz91/ecwpz91.github.io"
+siteLocalDir: "/your/path/here"
 
 # directory to drafts from the root of siteLocalDir
 siteDraftsDir: "_drafts/"
