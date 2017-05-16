@@ -8,13 +8,15 @@ date: "2017-05-16 18:07"
 
 The following describes the process of creating an GPT partition with `gdisk` using an installation of RHEL/CentOS.
 
-# Solution
+# Notable
 
 * If a disk is configured with a GPT already, or it is a new wiped disk that has a size greater than 2TiB (1024^4), you must use `gdisk` to create partitions.
 
 * Do **NOT** ever use `gdisk` on a disk that has been formatted with `fdisk` and already contains `fdisk` partitions.
 
 * On computers using the new Unified Extensible Firmware Interface (UEFI) BIOS system, GPT partitions are the only way to address disks.
+
+# Solution
 
 DEVICE     |
 ---------- | ----------

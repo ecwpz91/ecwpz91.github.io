@@ -58,3 +58,5 @@ DEVICE     |
     :information_source: if you experience any issues with `partprobe`, reboot the system.
 
 # Summary
+
+The MBR contains all that is needed to start a computer and is known as the first 512 bytes on a hard drive. Although still used today,the  GUID Partition Table (GPT) partitioning scheme has become the norm in order to address the ever growing size of hard drives.
