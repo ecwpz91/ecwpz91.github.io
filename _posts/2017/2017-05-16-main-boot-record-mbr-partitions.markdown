@@ -16,7 +16,7 @@ DEVICE     |
 <br/>
 1. Backup the first megabyte of raw blocks for easy rollback.
 
-        dd if=/dev/${DEVICE_NAME} of=/root/diskfile bs=1MB count=1
+        dd if=/dev/${DEVICE} of=/root/diskfile bs=1MB count=1
 
 2. Backup the `fstab` file as well.
 
@@ -24,7 +24,7 @@ DEVICE     |
 
 3. Run the  `fdisk` command.
 
-        fdisk /dev/${DEVICE_NAME}
+        fdisk /dev/${DEVICE}
 
 4. Check how much disk space is available. Press `p` to see an overview of the current disk allocation. Look for the total number of sectors and compare it to the last sector that is currently used. If the last partition does not end on the last sector, you have space available to create a new partition.
 
@@ -44,7 +44,7 @@ DEVICE     |
 10. Write the changes to the disk and exit by pressing `w`.
 11. Compare the in-memory kernel partition table by issuing the following commands:
 
-        fdisk -l /dev/${DEVICE_NAME}
+        fdisk -l /dev/${DEVICE}
         cat /proc/partitions
 
 12. Either reboot, or use the following command to write the changes to the kernel.
