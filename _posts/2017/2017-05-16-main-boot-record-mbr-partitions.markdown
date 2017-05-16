@@ -4,12 +4,13 @@ title: "Main Boot Record (MBR) Partitions"
 date: "2017-05-16 16:53"
 ---
 
-| Device Name  | Description |
-| ------------ | :-----------: |
-| /dev/sda | A hard disk that uses the SCSI driver. |
-| /dev/hda | The legacy IDE disk device type. |
-| /dev/vda | A disk in a KVM virtual machine that uses the virtio disk driver. |
-| /dev/xvda | A disk in a Xen virtual machine that uses the Xen virtual disk driver. |
+Device Name |
+-- | --
+/dev/sda | A hard disk that uses the SCSI driver.
+/dev/hda | The legacy IDE disk device type.
+/dev/vda | A disk in a KVM virtual machine that uses the virtio disk driver.
+/dev/xvda | A disk in a Xen virtual machine that uses the Xen virtual disk driver.
+
 
 1. Backup the first MB of raw blocks for easy rollback.
 
