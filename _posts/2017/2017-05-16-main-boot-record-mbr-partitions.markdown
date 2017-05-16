@@ -4,7 +4,7 @@ title: "Main Boot Record (MBR) Partitions"
 date: "2017-05-16 16:53"
 ---
 
-Device Name | Description |
+Device Name | Description
 --|--
 /dev/sda  |  A hard disk that uses the SCSI driver.
 /dev/hda  |  The legacy IDE disk device type.
