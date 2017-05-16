@@ -7,11 +7,11 @@ date: "2017-05-16 16:53"
 The following describes the process of creating an MBR partition with `fdisk` using an installation of RHEL/CentOS.
 
 DEVICE     |
----------- | --
+---------- | ----------
 /dev/sda   | A hard disk that uses the SCSI driver.
 /dev/hda   | The legacy IDE disk device type.
 /dev/vda   | A disk in a KVM virtual machine that uses the virtio disk driver.
-/dev/xvda  | A disk in a Xen virtual machine that uses the Xen virtual disk driver.
+/dev/xvda  | &nbsp;A disk in a Xen virtual machine that uses the Xen virtual disk driver.
 
 <br/>
 1. Backup the first megabyte of raw blocks for easy rollback.
