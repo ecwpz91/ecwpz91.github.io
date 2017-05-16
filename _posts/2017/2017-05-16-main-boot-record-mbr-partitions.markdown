@@ -51,4 +51,4 @@ DEVICE     |
 
         partprobe
 
-  :information_source: if you experience any issues with `partprobe`, reboot the system.
+    :information_source: if you experience any issues with `partprobe`, reboot the system.
