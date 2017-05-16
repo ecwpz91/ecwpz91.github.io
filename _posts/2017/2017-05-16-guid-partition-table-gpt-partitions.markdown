@@ -10,11 +10,11 @@ The following describes the process of creating an GPT partition with `gdisk` us
 
 * Do **NOT** ever use `gdisk` on a disk that has been formatted with `fdisk` and already contains `fdisk` partitions.
 
-DEVICE |
--- | --
-/dev/sda | A hard disk that uses the SCSI driver.
-/dev/hda | The legacy IDE disk device type.
-/dev/vda | A disk in a KVM virtual machine that uses the virtio disk driver.
+DEVICE    |
+--------- | --
+/dev/sda  | A hard disk that uses the SCSI driver.
+/dev/hda  | The legacy IDE disk device type.
+/dev/vda  | A disk in a KVM virtual machine that uses the virtio disk driver.
 /dev/xvda | A disk in a Xen virtual machine that uses the Xen virtual disk driver.
 
 <br/>
