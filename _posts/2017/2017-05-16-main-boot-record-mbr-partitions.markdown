@@ -4,6 +4,8 @@ title: "Main Boot Record (MBR) Partitions"
 date: "2017-05-16 16:53"
 ---
 
+The following describes the process of creating an MBR partition with `fdisk` using an installation of RHEL/CentOS.
+
 Device Name |
 -- | --
 /dev/sda | A hard disk that uses the SCSI driver.
