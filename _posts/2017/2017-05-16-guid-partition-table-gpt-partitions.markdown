@@ -10,24 +10,24 @@ The following describes the process of creating an GPT partition with `gdisk` us
 
 * Do **NOT** ever use `gdisk` on a disk that has been formatted with `fdisk` and already contains `fdisk` partitions.
 
-Device |
+DEVICE |
 -- | --
 /dev/sda | A hard disk that uses the SCSI driver.
 /dev/hda | The legacy IDE disk device type.
 /dev/vda | A disk in a KVM virtual machine that uses the virtio disk driver.
 /dev/xvda | A disk in a Xen virtual machine that uses the Xen virtual disk driver.
-
+<br/>
 1. Backup the first megabyte of raw blocks for easy rollback.
 
-    dd if=/dev/${DEVICE} of=/root/diskfile bs=1MB count=1
+        dd if=/dev/${DEVICE} of=/root/diskfile bs=1MB count=1
 
 2. Backup the `fstab` file as well.
 
-    cp /etc/fstab /root/fstab
+        cp /etc/fstab /root/fstab
 
 3. Run the  `gdisk` command.
 
-    gdisk /dev/${DEVICE}
+        gdisk /dev/${DEVICE}
 
 4. Type `n` to add a new partition.
 5. Use the default suggestion that specifies the first sector on disk that the new partition will start on.
@@ -45,6 +45,6 @@ Device |
 9. Write the changes to the disk and exit by pressing `w`.
 10. Either reboot, or use the following command to write the changes to the kernel.
 
-    partprobe
+        partprobe
 
 **[NOTE]** if you experience any issues with `partprobe`, reboot the system.
