@@ -16,6 +16,7 @@ DEVICE |
 /dev/hda | The legacy IDE disk device type.
 /dev/vda | A disk in a KVM virtual machine that uses the virtio disk driver.
 /dev/xvda | A disk in a Xen virtual machine that uses the Xen virtual disk driver.
+
 <br/>
 1. Backup the first megabyte of raw blocks for easy rollback.
 
