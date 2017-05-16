@@ -15,7 +15,7 @@ Device Name |
 
 <br/>
 
-1. Backup the first MB of raw blocks for easy rollback.
+1. Backup the first megabyte of raw blocks for easy rollback.
 
 
     dd if=/dev/${DEVICE_NAME} of=/root/diskfile bs=1MB count=1
@@ -33,11 +33,8 @@ Device Name |
 4. Check how much disk space is available. Press `p` to see an overview of the current disk allocation. Look for the total number of sectors and compare it to the last sector that is currently used. If the last partition does not end on the last sector, you have space available to create a new partition.
 
 5. Type `n` to add a new partition.
-
 6. MBR partitions are limited to a max of four logical partitions. If you need more than four logical partitions, select the extended option `e` in order to create logical partitions within an extended partition. Keep in mind that if there is an issue with the extended partition, all logical partitions will be affected. Otherwise, select the primary option `p` to create a primary partition.
-
 7. Use the default suggestion that specifies the first sector on disk that the new partition will start on.
-
 8. Specify the last sector that the partition will end on. If you use the default, then you will not have any disk space left to create additional partitions or logical volumes. To use another last sector:
 
   * Enter the number of the last sector you want to use.
@@ -51,7 +48,6 @@ Device Name |
   * 8e: Linux LVM
 
 10. Write the changes to the disk and exit by pressing `w`.
-
 11. Compare the in-memory kernel partition table by issuing the following commands:
 
 
