@@ -21,16 +21,13 @@ Device Name |
 
 1. Backup the first megabyte of raw blocks for easy rollback.
 
-
     dd if=/dev/${DEVICE_NAME} of=/root/diskfile bs=1MB count=1
 
 2. Backup the `fstab` file as well.
 
-
     cp /etc/fstab /root/fstab
 
 3. Run the  `gdisk` command.
-
 
     gdisk /dev/${DEVICE_NAME}
 
@@ -51,7 +48,6 @@ Device Name |
 8. Pres `p` to show an overview and verify the output.
 9. Write the changes to the disk and exit by pressing `w`.
 10. Either reboot, or use the following command to write the changes to the kernel.
-
 
     partprobe
 
