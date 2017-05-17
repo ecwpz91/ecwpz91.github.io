@@ -39,18 +39,6 @@ The following describes the process of creating the three layers in the LVM arch
 
 ## Layer 2: Volume Group (VG)
 
-### Physical Extent (PE)
-
-When creating a VG, a PE size is used. The PE size defines the size of the building blocks used to create logical volumes.
-
-By default, the extent size is 4MiB. Also, the PE size is **always** specified as a multiple of 2MiB, with a maximum size of 128 MiB. Use the `-s` option to specify the PE size.
-
-### Logical Extent (LE)
-
-When working with an Ext4 file system, a LE size is used. The LE size defines the size of the building blocks used to create logical volumes.
-
-:information_source: The extent size on LVM are in no way related to the extent sizes that are used on the file systems.
-
 1. Assign the PV to a VG.
 
         vgcreate ${VG_NAME} /dev/${DEVICE}
@@ -62,6 +50,18 @@ When working with an Ext4 file system, a LE size is used. The LE size defines th
 
         # Summary
         vgdisplay
+
+### Physical Extent (PE)
+
+When creating a VG, a PE size is used. The PE size defines the size of the building blocks used to create logical volumes.
+
+By default, the extent size is 4MiB. Also, the PE size is **always** specified as a multiple of 2MiB, with a maximum size of 128 MiB. Use the `-s` option to specify the PE size.
+
+### Logical Extent (LE)
+
+When working with an Ext4 file system, a LE size is used. The LE size defines the size of the building blocks used to create logical volumes.
+
+:information_source: The extent size on LVM are in no way related to the extent sizes that are used on the file systems.
 
 ## Layer 3: Logical Volume (LV)
 
