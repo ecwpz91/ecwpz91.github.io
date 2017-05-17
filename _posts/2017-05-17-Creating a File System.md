@@ -43,5 +43,5 @@ VFAT   | &nbsp;File system that is the functional equivalent of FAT32.
 
 As you may already know, a partition by itself is not very useful. It only becomes useful once you decide to do something with it. That usually means putting a file system on top of it!
 
-[1]: "{{ "Creating-a-Master-Boot-Record-Partition.html" | prepend: site.baseurl }}"
-[2]: "{{ "Creating-a-GUID-Partition-Table-Partition.html" | prepend: site.baseurl }}"
+[1]: https://ecwpz91.github.io/2017/05/16/Creating-a-Master-Boot-Record-Partition.html
+[2]: https://ecwpz91.github.io/2017/05/16/Creating-a-GUID-Partition-Table-Partition.html
