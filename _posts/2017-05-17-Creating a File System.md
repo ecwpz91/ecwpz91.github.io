@@ -26,7 +26,7 @@ NTFS   | &nbsp;Not supported in RHEL7.
 VFAT   | &nbsp;File system that is the functional equivalent of FAT32.
 
 <br/>
-1. Determine your target MBR or GPT partition disk device name.
+1. Create either a [MBR][1] or [GPT][2] partition.
 2. Choose which file system suites your use case.
 3. Run the `mkfs` command.
 
@@ -42,3 +42,6 @@ VFAT   | &nbsp;File system that is the functional equivalent of FAT32.
 # Summary
 
 As you may already know, a partition by itself is not very useful. It only becomes useful once you decide to do something with it. That usually means putting a file system on top of it!
+
+[1]: "{{ /2017/05/16/Creating-a-Master-Boot-Record-Partition.html | prepend: site.baseurl }}"
+[2]: "{{ /2017/05/16/Creating-a-GUID-Partition-Table-Partition.html | prepend: site.baseurl }}"
