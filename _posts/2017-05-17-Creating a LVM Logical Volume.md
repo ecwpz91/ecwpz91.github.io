@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Creating LVM Logical Volumes"
+title: "Creating a LVM Logical Volume"
 date: "2017-05-17 00:58"
 ---
 
