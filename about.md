@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-**Michael Surbey** is a Cloud Solutions Architect at Red Hat Red Hat, Inc.
+**Michael Surbey** is a {{ site.vocation }} at Red Hat Red Hat, Inc.
 
 I've developed this blog in order to contribute, document, and share my daily adventures/endeavors with others.
 
