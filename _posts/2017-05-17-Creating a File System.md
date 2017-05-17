@@ -10,7 +10,7 @@ The following describes the process of putting a file system on top of a partiti
 # Notable
 
 * The Ext3 and Ext4 principle developer stated that BtrFS is the better direction because it offers improvements in scalability, reliability, and ease of management.
-* VFAT is useful for USB thumb drives and data exchanges with other computers.
+* VFAT is useful for USB thumb drives and data exchanges with other computers, e.g. Mac and Windows.
 
 # Solution
 
@@ -20,9 +20,9 @@ xfs    | &nbsp;The default file system for RHEL7.
 Ext4   | &nbsp;The default file system in previous versions of RHEL (supported in RHEL7).
 Ext3   | &nbsp;Prior version of Ext4.
 Ext2   | &nbsp;Basic file system created in the 90s.
-BtrFS  | &nbsp;File system based on the copy-on-write (COW) principle that is intended to address the lack of pooling, snapshots, checksums, and integral multi-device spanning in Linux file systems.
+BtrFS  | &nbsp;File system based on the copy-on-write (COW) principle.
 NTFS   | &nbsp;Not supported in RHEL7.
-VFAT   | &nbsp; A file system that offers compatibility with Windows and Mac, it is the functional equivalent of the FAT32 file system.
+VFAT   | &nbsp;File system is the functional equivalent of FAT32.
 
 <br/>
 1. Determine your target MBR or GPT partition disk device name.
