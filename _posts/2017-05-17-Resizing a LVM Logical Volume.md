@@ -63,20 +63,20 @@ The following describes the process of resizing a logical volume using an instal
         # Decrease absolute size
         lvreduce -r -L -150M /dev/${VG_NAME}/${LV_NAME}
 
-.2. Verify the LV.
+2. Verify the LV.
 
-          # Listing
-          lvs
+        # Listing
+        lvs
 
-          # Summary
-          lvdisplay
+        # Summary
+        lvdisplay
 
-          # Filesystem
-          df -h
+        # Filesystem
+        df -h
 
 3. Create a file system on top of the LV.
 
-          mkfs.xfs /dev/${VG_NAME}/${LV_NAME}
+        mkfs.xfs /dev/${VG_NAME}/${LV_NAME}
 
 # Summary
 
