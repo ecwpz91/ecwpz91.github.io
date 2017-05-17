@@ -67,7 +67,7 @@ When working with an Ext4 file system, a LE size is used. The LE size defines th
           lvcreate -n ${LV_NAME} -L 100M ${VG_NAME}
 
           # Relative size
-          lvcreate -n ${LV_NAME} -l 50% FREE ${VG_NAME}
+          lvcreate -n ${LV_NAME} -l 50%FREE ${VG_NAME}
 
 2. Verify the LV.
 
