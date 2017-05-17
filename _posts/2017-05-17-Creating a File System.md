@@ -23,7 +23,7 @@ Ext3   | &nbsp;Prior version of Ext4.
 Ext2   | &nbsp;Basic file system created in the 90s.
 BtrFS  | &nbsp;File system based on the copy-on-write (COW) principle.
 NTFS   | &nbsp;Not supported in RHEL7.
-VFAT   | &nbsp;File system is the functional equivalent of FAT32.
+VFAT   | &nbsp;File system that is the functional equivalent of FAT32.
 
 <br/>
 1. Determine your target MBR or GPT partition disk device name.
