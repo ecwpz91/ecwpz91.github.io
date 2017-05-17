@@ -9,8 +9,9 @@ The following describes the process of putting a file system on top of a partiti
 
 # Notable
 
-* The Ext3 and Ext4 principle developer stated that BtrFS is the better direction because it offers improvements in scalability, reliability, and ease of management.
+* Ext3/4 principle developer stated that BtrFS is the better direction because it offers improvements in scalability, reliability, and ease of management.
 * VFAT is useful for USB thumb drives and data exchanges with other computers, e.g. Mac and Windows.
+* By default `mkfs` without any specified options will format a device using the Ext2 file system.
 
 # Solution
 
@@ -40,6 +41,4 @@ VFAT   | &nbsp;File system is the functional equivalent of FAT32.
 
 # Summary
 
-As you may already know, a partition by itself is not very useful. It only becomes useful once you decide to do something with it. That usually means putting a file system on top of it.
-
-Also, by default `mkfs` without any specified options will format a device using the Ext2 file system.
+As you may already know, a partition by itself is not very useful. It only becomes useful once you decide to do something with it. That usually means putting a file system on top of it!
