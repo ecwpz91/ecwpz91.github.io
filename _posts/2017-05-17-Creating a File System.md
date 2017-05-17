@@ -9,8 +9,8 @@ The following describes the process of putting a file system on top of a partiti
 
 # Notable
 
-* The Ext3 and Ext4 principle developer stated that BtrFS is the better direction because "it offers improvements in scalability, reliability, and ease of management."
-* VFAT is usefule for USB thumb drives and data exchanges with other computers.
+* The Ext3 and Ext4 principle developer stated that BtrFS is the better direction because it offers improvements in scalability, reliability, and ease of management.
+* VFAT is useful for USB thumb drives and data exchanges with other computers.
 
 # Solution
 
