@@ -10,7 +10,6 @@ The following describes the process of putting a file system on top of a partiti
 # Notable
 
 * The Ext3 and Ext4 principle developer stated that BtrFS is the better direction because "it offers improvements in scalability, reliability, and ease of management."
-* In 2015, Btrfs was adopted as the default file system for SUSE Linux Enterprise Server 12.
 * VFAT is usefule for USB thumb drives and data exchanges with other computers.
 
 # Solution
