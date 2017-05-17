@@ -30,12 +30,11 @@ VFAT   | &nbsp;File system that is the functional equivalent of FAT32.
 2. Choose which file system suites your use case.
 3. Run the `mkfs` command.
 
-        # Format a partition with the XFS
-        mkfs.xfs /dev/${DEVICE}
-
-        OR
-
+        # Format XFS
         mkfs -t xfs /dev/${DEVICE}
+
+        # Format XFS shorthand
+        mkfs.xfs /dev/${DEVICE}
 
     :information_source: The `-t` option will specify the file system type.
 
