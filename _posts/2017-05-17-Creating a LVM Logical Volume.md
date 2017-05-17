@@ -18,7 +18,7 @@ The following describes the process of creating the three layers in the LVM arch
 ## Layer 1: Physical Volume (PV)
 
 1. Create a [MBR][1] or [GPT][2] partition.
-2. Assign the partition to a PV.
+2. Assign partition to PV.
 
         pvcreate /dev/${DEVICE}
 
@@ -35,7 +35,7 @@ The following describes the process of creating the three layers in the LVM arch
 
 ## Layer 2: Volume Group (VG)
 
-1. Assign the PV to a VG.
+1. Assign PV to VG.
 
         vgcreate ${VG_NAME} /dev/${DEVICE}
 
@@ -61,7 +61,7 @@ When working with an Ext4 file system, a LE size is used. The LE size defines th
 
 ## Layer 3: Logical Volume (LV)
 
-  1. Assign a LV to a VG.
+  1. Assign LV to VG.
 
           # Absolue size
           lvcreate -n ${LV_NAME} -L 100M ${VG_NAME}
