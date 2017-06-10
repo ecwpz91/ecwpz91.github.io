@@ -6,8 +6,8 @@ permalink: /about/
 
 **Michael Surbey** is a {{ site.vocation }} at Red Hat Red Hat, Inc.
 
-I've developed this blog in order to contribute, document, and share my experiences with others.
+I've developed this blog in order to contribute, document, and share my interests with others.
 
-My interests include athletics, finance, tutoring, and research on a variety of technical topics such as containers, DevOps, coding, database management systems, mobile development, networking, and security.
+Posts may include information on business, sports, and variety of useful technical topics I've learned over the years.
 
-If you'd like to see my recent bookmarks, click [here](https://pinboard.in/u:msurbey).
+Looking for more? Check out my recent bookmarks be clicking [here](https://pinboard.in/u:msurbey).
