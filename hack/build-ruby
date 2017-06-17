@@ -1,0 +1,31 @@
+#!/bin/bash
+
+DISTRO="$(cat /etc/*-release | grep '^ID=' | egrep -o ".*" | tr -d '"')"
+PKGMGR="/usr/bin/yum"
+PKGDEP=( ruby-devel redhat-rpm-config gem )
+
+[[ $DISTRO =~ fedora* ]] && NAMESPACE=fedora
+
+case ${NAMESPACE} in
+  fedora ) PKGMGR="/usr/bin/dnf"
+  ;;
+esac
+
+function set_pkg_dep() {
+  local pkgs=""
+
+  for dep in "${PKGDEP[@]}"; do
+    if ! $PKGMGR list installed | grep ${dep}; then
+      pkgs="${dep} ${pkgs}"
+    fi
+  done
+
+  PKGDEP=( "${pkgs}" )
+}
+
+if [[ "${PKGDEP[@]}" != "" ]]; then
+  echo -n "root@$HOSTNAME"
+  su - root -c "${PKGMGR} install --setopt=tsflags=nodocs ${PKGDEP[*]}"
+else
+  echo -n "packages exist"
+fi
