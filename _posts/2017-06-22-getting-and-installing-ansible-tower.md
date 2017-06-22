@@ -74,12 +74,12 @@ Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
         # Verify that the user is added to the libvirt group
         groups username
 
-4. Create a personal directory for saving Ansible Tower Vagrantfile's.
+4. Create a personal directory for saving Ansible Tower's Vagrantfile.
 
         # Create a new directory with name path
         mkdir -p $HOME/virt/ansible-tower/2.1.4
 
-5. Change into the newly created directory and execute the following commands:
+5. Change into the newly created directory and execute the following `vagrant` commands:
 
         pushd $HOME/virt/ansible-tower/2.1.4
 
