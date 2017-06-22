@@ -39,7 +39,7 @@ Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
 
         # Install dependency packages
         dnf install -y binutils gcc make patch libgomp glibc-headers glibc-devel \
-                    kernel-headers kernel-devel dkms
+                       kernel-headers kernel-devel dkms
 
         # Install latest version
         dnf install VirtualBox-5.1
