@@ -80,12 +80,9 @@ Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
         # Build the Tower VM.
         vagrant up
 
-        # Log into the VM
-        vagrant ssh
-
-        # Login as super user, and Tower will display a message
+        # Log into the VM, and Tower will display a message
         # with connection information
-        sudo su
+        vagrant ssh
 
 6. Visit the URL provided by the login welcome message (something like `https://10.42.0.42/`), and after confirming a security exception for the Ansible Tower certificate, login with the credentials from Step 6.
 
