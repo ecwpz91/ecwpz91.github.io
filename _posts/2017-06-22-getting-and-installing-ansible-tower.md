@@ -47,7 +47,7 @@ Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
         # Rebuild kernel modules
         /usr/lib/virtualbox/vboxdrv.sh setup
 
-        # Add yourself to the VirtualBox group
+        # Add user account to the VirtualBox group
         usermod -a -G vboxusers username
 
         # Start VirtualBox
@@ -98,7 +98,9 @@ Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
 
 # Summary
 
-Ansible Tower is centered around the idea of organizing Projects (which run your playbooks via Jobs) and Inventories (which describe the servers on which your playbooks should be run) inside of Organizations. Organizations are then set up with different levels of access based on Users and Credentials grouped in different Teams. It’s a little overwhelming at first, but once the initial structure is configured, you’ll see the power and flexibility Tower’s Project workflow affords.
+Ansible Tower is centered around the idea of organizing Projects (which run your playbooks via Jobs) and Inventories (which describe the servers on which your playbooks should be run) inside of Organizations. Organizations are then set up with different levels of access based on Users and Credentials grouped in different Teams.
+
+You should now be ready to get hands-on with Ansible Tower.
 
 # Resources
 
