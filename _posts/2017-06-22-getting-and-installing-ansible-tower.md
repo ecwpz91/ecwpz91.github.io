@@ -58,7 +58,7 @@ Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
         # If you installed gems from Fedora official repo (see notables above)
         dnf install vagrant
 
-        # Otherwise follow Vagrant's online documentation.
+        # Otherwise, follow Vagrant's online documentation.
 
 4. Use `libvirt` as a non-root user.
 
