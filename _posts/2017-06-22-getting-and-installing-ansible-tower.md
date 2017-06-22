@@ -91,7 +91,7 @@ Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
         # Log into the VM, and Tower will display a message with connection information
         vagrant ssh
 
-6. Visit the URL provided by the login welcome message (something like `https://10.42.0.42/`), and after confirming a security exception for the Ansible Tower certificate, login with the credentials from Step 5.
+6. Visit the URL provided by the login welcome message (something like `https://10.42.0.42/`), and after confirming a security exception for the Ansible Tower certificate, login with the credentials from Step 6.
 
 7. At this point, you will need to register a free trial license of Ansible Tower following the instructions on the screen. The free trial allows you to use all of Tower’s features for up to 10 servers, and is great for experimenting and seeing how Tower fits into your workflow. After you get the license (it’s a block of JSON which you paste into the license field), you should get to Tower’s default dashboard page.
 
