@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "getting-and-installing-ansible-tower"
+title: "Getting and Installing Ansible Tower"
 date: "2017-06-22 15:01"
 ---
 
