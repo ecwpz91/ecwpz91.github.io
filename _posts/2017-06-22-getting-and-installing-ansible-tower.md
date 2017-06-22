@@ -100,7 +100,7 @@ Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
 
 Ansible Tower is centered around the idea of organizing Projects (which run your playbooks via Jobs) and Inventories (which describe the servers on which your playbooks should be run) inside of Organizations. Organizations are then set up with different levels of access based on Users and Credentials grouped in different Teams.
 
-You should now be ready to get hands-on with Ansible Tower.
+You should now be ready to get hands-on with [Ansible Tower][7].
 
 # Resources
 
@@ -113,3 +113,4 @@ You should now be ready to get hands-on with Ansible Tower.
 [4]: https://www.vagrantup.com/downloads.html
 [5]: https://www.ansiblefordevops.com/
 [6]: https://www.if-not-true-then-false.com/2010/install-virtualbox-with-yum-on-fedora-centos-red-hat-rhel/
+[7]: https://www.ansible.com/tower
