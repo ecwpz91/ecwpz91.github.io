@@ -60,19 +60,10 @@ Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
 
         # Otherwise, follow Vagrant's online documentation.
 
-4. Use `libvirt` as a non-root user.
+4. Set the environment variables.
 
-        # Check if the group already exists
-         grep -o libvirt.* /etc/group
-
-        # If not, create it
-        groupadd -g 986 libvirt
-
-        # Add user account to the libvirt group
-        usermod -aG libvirt username
-
-        # Verify that the user is added to the libvirt group
-        groups username
+        # Set the Vagrant default provider to VirtualBox.
+        VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 4. Create a personal directory for saving Ansible Tower's Vagrantfile.
 
