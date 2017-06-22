@@ -12,7 +12,7 @@ The following describes the process of trying out Ansible Tower locally using an
 
 * Make sure you enable Legacy/CSM Boot Support in UEFI Firmware (BIOS).
 * CentOS 7/6/5 and Red Hat (RHEL) 7/6/5 needs [EPEL][1] repository.
-* If you want to install vagrant via `dnf install vagrant`, first follow [Gems installation][2].
+* If you want to install vagrant via `dnf`, first follow [Gems installation][2].
 
 # Solution
 
@@ -42,7 +42,7 @@ Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
                        kernel-headers kernel-devel dkms
 
         # Install latest version
-        dnf install VirtualBox-5.1
+        dnf install -y VirtualBox-5.1
 
         # Rebuild kernel modules
         /usr/lib/virtualbox/vboxdrv.sh setup
@@ -56,7 +56,7 @@ Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
 3. Install [Vagrant][4].
 
         # If you installed gems from Fedora official repo (see notables above)
-        dnf install vagrant
+        dnf install -y vagrant
 
         # Otherwise, follow Vagrant's online documentation.
 
