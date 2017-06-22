@@ -63,7 +63,7 @@ Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
 4. Set environment variables.
 
         # Set the Vagrant default provider to VirtualBox.
-        VAGRANT_DEFAULT_PROVIDER=virtualbox
+        export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 4. Create a personal directory for saving Ansible Tower's Vagrantfile.
 
