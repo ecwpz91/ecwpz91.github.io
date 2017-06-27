@@ -8,4 +8,4 @@ permalink: /about/
 
 With a background in development, design, and management of enterprise IT-driven solutions, Mike has proven expertise in helping government departments and agencies create better a citizen experience the open source way.
 
-Mike has developed this blog in order to document and share his latest interests with others. Posts may include information on business, sports, and variety of useful technical topics he's learned over the years.
+Mike has created this blog in order to document and share his latest interests with others. Posts may include information on business, sports, and variety of technical topics learned over the years.
