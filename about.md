@@ -4,10 +4,6 @@ title: About
 permalink: /about/
 ---
 
-**Michael Surbey** is a {{ site.vocation }} at Red Hat Red Hat, Inc.
+**Michael Surbey** is a {{ site.vocation }} at Red Hat in the Washington, D.C. metropolitan area. Mike is passionate about investigating, researching, teaching, counseling, supporting and advising U.S. public sector customers, contributors, and partners on open source solution adoption for making the world a better place.
 
-I've developed this blog in order to document and share some of my latest interests with others.
-
-Posts may include information on business, sports, and variety of useful technical topics I've learned over the years.
-
-Looking for more? Check out my recent bookmarks by clicking [here](https://pinboard.in/u:msurbey).
+With a background in development, design, and management of enterprise IT-driven solutions, Mike has proven expertise in helping government departments and agencies create better a citizen experience the open source way.
