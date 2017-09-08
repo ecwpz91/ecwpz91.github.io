@@ -22,13 +22,13 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
    **WARNING** Not responsible for direct, indirect, incidental or consequential damages resulting from any defect, error or failure to perform.
 
-        # (Re)boot the system.
-        # Interrupt the boot loader menu countdown by pressing any key.
-        # Move the cursor to the entry to be started.
-        # Press e to edit the current entry.
-        # Move the cursor to the line that starts with linux16\. This is the kernel command line.
+        # (Re)boot the system
+        # Interrupt the boot loader menu countdown by pressing any key
+        # Move the cursor to the entry to be started
+        # Press 'e' to edit the current entry
+        # Move the cursor to the line that starts with linux16
         # Append `rd.break`
-        # Press Ctrl+x to boot with these changes.
+        # Press Ctrl+x to boot with these changes
 
         # Remount the file system as read/write
         mount -o rw,remount /sysroot
