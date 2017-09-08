@@ -6,7 +6,7 @@ date: '2017-09-08 18:25'
 
 # Problem
 
-The following describes the process of trying out CloudForms locally using an installation of Fedora 26.
+The following describes the process of trying out CloudForms via Docker locally using an installation of Fedora 26.
 
 # Solution
 
@@ -117,6 +117,8 @@ Use Local Cluster Management along with the OpenShift "oc cluster up" Wrapper sc
                                            firewall-cmd --permanent --zone dockerc --add-port 8053/udp
                                            firewall-cmd --reload"
   ```
+
+
 
 1. # Summary
 
