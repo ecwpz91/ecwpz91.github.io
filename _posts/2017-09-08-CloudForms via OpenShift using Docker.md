@@ -15,7 +15,7 @@ Use Local Cluster Management along with the OpenShift "oc cluster up" Wrapper sc
 1. Open a terminal and install Docker.
 
   ```
-  echo -n "root@$HOSTNAME "; su - root -c "dnf install docker -y"
+  dnf install docker -y
   ```
 
 2. Setup block-level storage driver (optional).
@@ -92,8 +92,8 @@ Use Local Cluster Management along with the OpenShift "oc cluster up" Wrapper sc
 
   # Install and setup bash completion
   echo -n "root@$HOSTNAME "; su - root -c "cp -f $TMP_DIR/oc $OC_HOME
-                                           oc completion bash > /etc/bash_completion.d/oc-cli
-                                           source /etc/bash_completion.d/oc-cli"
+                                         oc completion bash > /etc/bash_completion.d/oc-cli
+                                         source /etc/bash_completion.d/oc-cli"
 
   # Source system wide initialization file
   source /etc/bashrc
@@ -104,23 +104,54 @@ Use Local Cluster Management along with the OpenShift "oc cluster up" Wrapper sc
 7. Configure the Docker daemon with an insecure registry parameter of 172.30.0.0/16.
 
   ```
-  echo -n "root@$HOSTNAME "; su - root -c "sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16"' /etc/sysconfig/docker"
+  sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16"' /etc/sysconfig/docker
   ```
 
 8. Create a new firewalld zone for the subnet and grant it access to the API and DNS ports.
 
   ```
-  echo -n "root@$HOSTNAME "; su - root -c "firewall-cmd --permanent --new-zone dockerc
-                                           firewall-cmd --permanent --zone dockerc --add-source 172.17.0.0/16
-                                           firewall-cmd --permanent --zone dockerc --add-port 8443/tcp
-                                           firewall-cmd --permanent --zone dockerc --add-port 53/udp
-                                           firewall-cmd --permanent --zone dockerc --add-port 8053/udp
-                                           firewall-cmd --reload"
+  firewall-cmd --permanent --new-zone dockerc
+  firewall-cmd --permanent --zone dockerc --add-source 172.17.0.0/16
+  firewall-cmd --permanent --zone dockerc --add-port 8443/tcp
+  firewall-cmd --permanent --zone dockerc --add-port 53/udp
+  firewall-cmd --permanent --zone dockerc --add-port 8053/udp
+  firewall-cmd --reload
   ```
 
+9. Install oc-cluster wrapper.
 
+  ```
+  pushd $HOME/.local/share git clone https://github.com/openshift-evangelists/oc-cluster-wrapper
+  echo 'PATH=$HOME/.local/share/oc-cluster-wrapper:$PATH' >> $HOME/.bashrc
+  oc-cluster completion bash > /etc/bash_completion.d/oc-cluster.bash
+  echo 'source $HOME/.local/share/oc-cluster-wrapper/oc-cluster.bash'
+  popd
 
-1. # Summary
+  source $HOME/.bashrc
+  ```
+
+10. Start the OpenShift cluster and make the default user a cluster administrator.
+
+  ```
+  oc-cluster up
+  oc login -u system:admin
+  oc adm policy add-cluster-role-to-user cluster-admin developer
+  oc login -u developer -p devel
+  ```
+
+11. Deploy CloudForms ontop of OpenShift.
+
+  ```
+  oc-cluster plugin-install cfme
+  ```
+
+12. Open a browser and goto `https://cloudforms-cfme.apps.127.0.0.1.nip.io`.
+
+# Summary
+
+This tutorial helps developers and operation engineers get hands-on with CloudForms and OpenShift locally using native host Docker containers.
+
+Although this isn't the official enterprise supported tool chain, it's example of how the open source continues to drive innovation! Pretty neat, don't you think?
 
 [1]: https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md#linux
 [2]: https://github.com/openshift-evangelists/oc-cluster-wrapper
