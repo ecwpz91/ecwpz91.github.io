@@ -74,18 +74,20 @@ Use Local Cluster Management along with the OpenShift "oc cluster up" Wrapper sc
 
 5. Download the Linux oc binary from Red Hat Customer Portal and place it in your path.
 
+   Alternatively, create and run the following script:
+
   ```
   #!/bin/bash
 
   TMP_DIR=$(mktemp --suffix oc-cli -d)
   OC_HOME=/usr/bin
-  ARCHIVE=$HOME/Downloads/openshift-origin-client-tools-v1.5.1-7b451fc-linux-64bit.tar.gz
+  ARCHIVE=$HOME/Downloads/oc-3.6.173.0.21-linux.tar.gz
 
   # Check if archive exists
   [[ ! -f $ARCHIVE ]] && echo "Archive not found" && exit 1
 
   # Extract tarball
-  tar -xzf $ARCHIVE -C $TMP_DIR --strip 1 &>/dev/null
+  tar -xzf $ARCHIVE -C $TMP_DIR &>/dev/null
 
   # Add execution file mode
   chmod +x $TMP_DIR/oc
