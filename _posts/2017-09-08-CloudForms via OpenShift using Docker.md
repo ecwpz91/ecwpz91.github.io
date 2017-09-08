@@ -133,7 +133,7 @@ Use Local Cluster Management along with the OpenShift "oc cluster up" Wrapper sc
 
 This tutorial helps developers and operation engineers get hands-on with CloudForms and OpenShift locally using native host Docker containers.
 
-Although this isn't an official enterprise supported tool chain, it's example of how the open source continues to drive innovation! Pretty neat, don't you think?
+Although this isn't an official enterprise supported tool chain, it's a neat example of how the open source continues to drive innovation! Pretty neat, don't you think?
 
 [1]: https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md#linux
 [2]: https://github.com/openshift-evangelists/oc-cluster-wrapper
