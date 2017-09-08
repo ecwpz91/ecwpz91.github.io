@@ -18,20 +18,19 @@ Use Local Cluster Management along with the OpenShift "oc cluster up" Wrapper sc
 
 2. Setup block-level storage driver (optional).
 
-  Why? Performs better for write-heavy workloads (though not as well as Docker volumes).
+   Why? Performs better for write-heavy workloads (though not as well as Docker volumes).
 
-  **WARNING** Not responsible for direct, indirect, incidental or consequential damages resulting from any defect, error or failure to perform.
+   **WARNING** Not responsible for direct, indirect, incidental or consequential damages resulting from any defect, error or failure to perform.
 
-  - (Re)boot the system.
-  - Interrupt the boot loader menu countdown by pressing any key.
-  - Move the cursor to the entry to be started.
-  - Press e to edit the current entry.
-  - Move the cursor to the line that starts with linux16\. This is the kernel command line.
-  - Append `rd.break`
-  - Press Ctrl+x to boot with these changes.
+        # (Re)boot the system.
+        # Interrupt the boot loader menu countdown by pressing any key.
+        # Move the cursor to the entry to be started.
+        # Press e to edit the current entry.
+        # Move the cursor to the line that starts with linux16\. This is the kernel command line.
+        # Append `rd.break`
+        # Press Ctrl+x to boot with these changes.
 
-
-        # Mount the file system as read/write
+        # Remount the file system as read/write
         mount -o rw,remount /sysroot
 
         # Mount lvm dependencies
@@ -99,7 +98,6 @@ Use Local Cluster Management along with the OpenShift "oc cluster up" Wrapper sc
         sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16"' /etc/sysconfig/docker
 
 8. Create a new firewalld zone for the subnet and grant it access to the API and DNS ports.
-
 
         firewall-cmd --permanent --new-zone dockerc
         firewall-cmd --permanent --zone dockerc --add-source 172.17.0.0/16
