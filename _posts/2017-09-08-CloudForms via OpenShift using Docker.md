@@ -92,17 +92,33 @@ Use Local Cluster Management along with the OpenShift "oc cluster up" Wrapper sc
 
   # Install and setup bash completion
   echo -n "root@$HOSTNAME "; su - root -c "cp -f $TMP_DIR/oc $OC_HOME
-                                         oc completion bash > /etc/bash_completion.d/oc-cli
-                                         source /etc/bash_completion.d/oc-cli"
+                                           oc completion bash > /etc/bash_completion.d/oc-cli
+                                           source /etc/bash_completion.d/oc-cli"
 
   # Source system wide initialization file
   source /etc/bashrc
   ```
 
 6. Check that `sysctl net.ipv4.ip_forward` is set to 1.
-7.
 
-# Summary
+7. Configure the Docker daemon with an insecure registry parameter of 172.30.0.0/16.
+
+  ```
+  echo -n "root@$HOSTNAME "; su - root -c "sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16"' /etc/sysconfig/docker"
+  ```
+
+8. Create a new firewalld zone for the subnet and grant it access to the API and DNS ports.
+
+  ```
+  echo -n "root@$HOSTNAME "; su - root -c "firewall-cmd --permanent --new-zone dockerc
+                                           firewall-cmd --permanent --zone dockerc --add-source 172.17.0.0/16
+                                           firewall-cmd --permanent --zone dockerc --add-port 8443/tcp
+                                           firewall-cmd --permanent --zone dockerc --add-port 53/udp
+                                           firewall-cmd --permanent --zone dockerc --add-port 8053/udp
+                                           firewall-cmd --reload"
+  ```
+
+1. # Summary
 
 [1]: https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md#linux
 [2]: https://github.com/openshift-evangelists/oc-cluster-wrapper
