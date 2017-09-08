@@ -10,7 +10,7 @@ The following describes the process of trying out CloudForms via OpenShift using
 
 # Solution
 
-Use Local Cluster Management along with the OpenShift "oc cluster up" Wrapper script.
+Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrapper script][2].
 
 1. Open a terminal and install Docker.
 
@@ -64,7 +64,7 @@ Use Local Cluster Management along with the OpenShift "oc cluster up" Wrapper sc
         systemctl enable docker
         systemctl reboot
 
-5. Download the Linux oc binary from Red Hat Customer Portal and place it in your path.
+5. Download the Linux oc binary from [Red Hat Customer Portal][3] and place it in your path.
 
    Alternatively, create and run the following script:
 
@@ -108,7 +108,8 @@ Use Local Cluster Management along with the OpenShift "oc cluster up" Wrapper sc
 
 9. Install oc-cluster wrapper.
 
-        pushd $HOME/.local/share git clone https://github.com/openshift-evangelists/oc-cluster-wrapper
+        pushd $HOME/.local/share
+        git clone https://github.com/openshift-evangelists/oc-cluster-wrapper
         echo 'PATH=$HOME/.local/share/oc-cluster-wrapper:$PATH' >> $HOME/.bashrc
         oc-cluster completion bash > /etc/bash_completion.d/oc-cluster.bash
         echo 'source $HOME/.local/share/oc-cluster-wrapper/oc-cluster.bash'
