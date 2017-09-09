@@ -28,7 +28,7 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
        # Press 'e' to edit the current entry
        # Move the cursor to the line that starts with linux16
        # Append 'rd.break'
-       # Press 'ctrl+x' to boot with these changes
+       # Press 'ctrl+x' to boot with these changes, then perform the following:
 
        # Remount the file system as read/write
        mount -o rw,remount /sysroot
