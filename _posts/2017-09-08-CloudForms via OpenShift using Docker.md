@@ -138,7 +138,7 @@ For any purist out there, and memory concerned individuals, this solution provid
 
 Also, since CloudForms has a dependency on persistent volume storage, the wrapper script provides very useful functions for cluster profiling and local storage.
 
-Pretty neat example of how open source community continues to drive innovation around container developer tooling, don't you think?
+Pretty neat example of how open source community continues to drive innovation around container tooling, don't you think?
 
 [1]: https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md#linux
 [2]: https://github.com/openshift-evangelists/oc-cluster-wrapper
