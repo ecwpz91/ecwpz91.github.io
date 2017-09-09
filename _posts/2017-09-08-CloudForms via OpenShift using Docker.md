@@ -136,7 +136,7 @@ This tutorial helps developers and operation engineers get hands-on with CloudFo
 
 For any purist out there, and memory concerned individuals, this solution provides a great way to "cut the fat" associated with provisioning VMs.
 
-Also, since CloudForms has a dependency on persistent volume storage, the wrapper script provides very useful scripts around profiling and local storage.
+Also, since CloudForms has a dependency on persistent volume storage, the wrapper script provides very useful functions for cluster profiling and local storage.
 
 Although not an official enterprise supported tool chain, it's a noteworthy example of how open source community continues to drive innovation around developer tooling and OpenShift!
 
