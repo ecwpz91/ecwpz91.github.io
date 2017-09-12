@@ -151,7 +151,8 @@ Try implementing the [patch][4] I've made (based off [PR #59][5]), like so:
 
     #!/bin/bash
 
-    PLUGIN_DIR=$HOME/.local/share/oc-cluster-wrapper/plugins.d
+    OC_WRAPPER=$HOME/.local/share/oc-cluster-wrapper
+    PLUGIN_DIR=$OC_WRAPPER/plugins.d
     GITHUB_CID=5bb77eb6e5eff1aa431d9f1db103afa14976dae9
     GITHUB_RAW=https://raw.githubusercontent.com/ecwpz91/oc-cluster-wrapper
     GITHUB_URI=${GITHUB_RAW}/${GITHUB_CID}/plugins.d/cfme.local.plugin
