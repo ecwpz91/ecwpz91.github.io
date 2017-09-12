@@ -64,7 +64,7 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
        systemctl enable docker
        systemctl reboot
 
-5. Download the Linux oc binary from [Red Hat Customer Portal][3] and place it in your path.
+5. Download the Linux oc binary from [Red Hat Customer Portal][3] and place it on your path.
 
    Alternatively, create and run the following script:
 
