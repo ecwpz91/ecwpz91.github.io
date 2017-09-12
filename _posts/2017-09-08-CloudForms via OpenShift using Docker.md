@@ -121,13 +121,13 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
        && rm -rf ${temp} master.zip
 
        # Add wrapper to PATH
-       echo "PATH=$OC_WRAP:$PATH" >> $HOME/.bashrc
+       echo "PATH=${OC_WRAPPER}:$PATH" >> $HOME/.bashrc
 
        # Create wrapper bash completion
-       oc-cluster completion bash > $OC_WRAP/oc-cluster.bash
+       oc-cluster completion bash > ${OC_WRAPPER}/oc-cluster.bash
 
        # Add completion to PATH
-       echo "source $OC_WRAP/oc-cluster.bash"
+       echo "source ${OC_WRAPPER}/oc-cluster.bash"
 
 10. Start the OpenShift cluster and make the default user a cluster administrator.
 
