@@ -85,8 +85,8 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
        # Install and setup bash completion
        echo -n "root@$HOSTNAME "; su - root -c "cp -f $TMP_DIR/oc $OC_HOME
-                                     oc completion bash > /etc/bash_completion.d/oc-cli
-                                     source /etc/bash_completion.d/oc-cli"
+                                     oc completion bash > /etc/bash_completion.d/oc
+                                     source /etc/bash_completion.d/oc"
 
        # Source system wide initialization file
        source /etc/bashrc
