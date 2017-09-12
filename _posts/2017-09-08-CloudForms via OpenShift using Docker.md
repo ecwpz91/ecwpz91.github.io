@@ -110,9 +110,10 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
        #!/bin/bash
        OC_WRAPPER=$HOME/.local/share/oc-cluster-wrapper
+       GITHUB_ZIP=https://github.com/openshift-evangelists/oc-cluster-wrapper/archive/master.zip
 
        # Download and extract
-       curl -LOk https://github.com/openshift-evangelists/oc-cluster-wrapper/archive/master.zip \
+       curl -LOk ${GITHUB_ZIP} \
        && temp=$(mktemp -d) \
        && unzip -d ${temp} master.zip \
        && mkdir -p ${OC_WRAPPER} \
