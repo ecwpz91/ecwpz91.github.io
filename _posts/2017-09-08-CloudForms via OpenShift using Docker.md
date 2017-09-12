@@ -109,6 +109,7 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 9. Install oc-cluster wrapper.
 
        #!/bin/bash
+       
        OC_WRAPPER=$HOME/.local/share/oc-cluster-wrapper
        GITHUB_ZIP=https://github.com/openshift-evangelists/oc-cluster-wrapper/archive/master.zip
 
