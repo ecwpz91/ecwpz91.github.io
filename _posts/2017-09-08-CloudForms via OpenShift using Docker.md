@@ -132,7 +132,7 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
 # Troubleshooting
 
-## CloudForms Setup Fails on OpenShift
+## CloudForms setup fails on OpenShift
 
 If the `postgresql` pod fails to schedule and shuts down, the `cloudforms` pod fails to deploy, or `https://cloudforms-cfme.apps.127.0.0.1.nip.io` won't load...
 
