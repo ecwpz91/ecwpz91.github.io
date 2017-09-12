@@ -123,7 +123,7 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
        # Add wrapper to PATH
        echo "PATH=${OC_WRAPPER}:$PATH" >> $HOME/.bashrc
 
-       # Create wrapper bash completion
+       # Create bash completion
        oc-cluster completion bash > ${OC_WRAPPER}/oc-cluster.bash
 
        # Add completion to PATH
