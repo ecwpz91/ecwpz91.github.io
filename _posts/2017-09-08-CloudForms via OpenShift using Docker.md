@@ -93,9 +93,9 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
 6. Check that `sysctl net.ipv4.ip_forward` is set to 1.
 
-7. Configure the Docker daemon with an insecure registry parameter of 172.30.0.0/16.
+7. Edit the `/etc/sysconfig/docker` file and add `--insecure-registry 172.30.0.0/16` to the `OPTIONS` parameter.
 
-       sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16"' /etc/sysconfig/docker
+       OPTIONS='--selinux-enabled --insecure-registry 172.30.0.0/16'
 
 8. Create a new firewalld zone for the subnet and grant it access to the API and DNS ports.
 
@@ -108,14 +108,25 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
 9. Install oc-cluster wrapper.
 
-       pushd $HOME/.local/share
-       git clone https://github.com/openshift-evangelists/oc-cluster-wrapper
-       echo 'PATH=$HOME/.local/share/oc-cluster-wrapper:$PATH' >> $HOME/.bashrc
-       oc-cluster completion bash > /etc/bash_completion.d/oc-cluster.bash
-       echo 'source $HOME/.local/share/oc-cluster-wrapper/oc-cluster.bash'
-       popd
+       #!/bin/bash
+       OC_WRAP=$HOME/.local/share/oc-cluster-wrapper
 
-       source $HOME/.bashrc
+       # Download and extract
+       curl -LOk https://github.com/openshift-evangelists/oc-cluster-wrapper/archive/master.zip \
+       && temp=$(mktemp -d) \
+       && unzip -d ${temp} master.zip \
+       && mkdir -p ${OC_WRAP} \
+       && mv ${temp}/*/* ${OC_WRAP} \
+       && rm -rf ${temp} master.zip
+
+       # Add wrapper to PATH
+       echo "PATH=$OC_WRAP:$PATH" >> $HOME/.bashrc
+
+       # Create wrapper bash completion
+       oc-cluster completion bash > $OC_WRAP/oc-cluster.bash
+
+       # Add completion to PATH
+       echo "source $OC_WRAP/oc-cluster.bash"
 
 10. Start the OpenShift cluster and make the default user a cluster administrator.
 
@@ -137,18 +148,17 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 If the `postgresql` pod fails to schedule and shuts down, the `cloudforms` pod fails to deploy, or `https://cloudforms-cfme.apps.127.0.0.1.nip.io` won't load...
 
 Try implementing the [patch][4] I've made (based off [PR #59][5]), like so:
+    #!/bin/bash
 
-        #!/bin/bash
+    PLUGIN_DIR=$HOME/.local/share/oc-cluster-wrapper/plugins.d
+    GITHUB_CID=5bb77eb6e5eff1aa431d9f1db103afa14976dae9
+    GITHUB_RAW=https://raw.githubusercontent.com/ecwpz91/oc-cluster-wrapper
+    GITHUB_URI=${GITHUB_RAW}/${GITHUB_CID}/plugins.d/cfme.local.plugin
 
-        PLUGIN_DIR=$HOME/.local/share/oc-cluster-wrapper/plugins.d
-        GITHUB_CID=5bb77eb6e5eff1aa431d9f1db103afa14976dae9
-        GITHUB_RAW=https://raw.githubusercontent.com/ecwpz91/oc-cluster-wrapper
-        GITHUB_URI=${GITHUB_RAW}/${GITHUB_CID}/plugins.d/cfme.local.plugin
-
-        pushd $PLUGIN_DIR
-        mv cfme.local.plugin cfme.local.plugin.backup
-        curl ${GITHUB_URI} > cfme.local.plugin
-        popd
+    pushd ${PLUGIN_DIR}
+    mv cfme.local.plugin cfme.local.plugin.backup
+    curl ${GITHUB_URI} > cfme.local.plugin
+    popd
 
 Then reset the environment using `oc-cluster destroy`, and repeat steps 10-12 above.
 
