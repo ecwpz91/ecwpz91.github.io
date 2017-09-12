@@ -130,6 +130,28 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
 12. Open a browser and goto `https://cloudforms-cfme.apps.127.0.0.1.nip.io`.
 
+# Troubleshooting
+
+## CloudForms Setup Fails on OpenShift
+
+If the `postgresql` pod fails to schedule and shuts down, the `cloudforms` pod fails to deploy, or `https://cloudforms-cfme.apps.127.0.0.1.nip.io` won't load...
+
+Try implementing the [patch][4] I've made (based off [PR #59][5]), like so:
+
+        #!/bin/bash
+
+        PLUGIN_DIR=$HOME/.local/share/oc-cluster-wrapper/plugins.d
+        GITHUB_CID=5bb77eb6e5eff1aa431d9f1db103afa14976dae9
+        GITHUB_RAW=https://raw.githubusercontent.com/ecwpz91/oc-cluster-wrapper
+        GITHUB_URI=${GITHUB_RAW}/${GITHUB_CID}/plugins.d/cfme.local.plugin
+
+        pushd $PLUGIN_DIR
+        mv cfme.local.plugin cfme.local.plugin.backup
+        curl ${GITHUB_URI} > cfme.local.plugin
+        popd
+
+Then reset the environment using `oc-cluster destroy`, and repeat steps 10-12 above.
+
 # Summary
 
 This tutorial helps developers and operation engineers get hands-on with CloudForms and OpenShift locally using Docker containers only.
@@ -143,3 +165,5 @@ Pretty neat example of how open source community continues to drive innovation a
 [1]: https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md#linux
 [2]: https://github.com/openshift-evangelists/oc-cluster-wrapper
 [3]: https://access.redhat.com/downloads/content/290
+[4]: https://github.com/openshift-evangelists/oc-cluster-wrapper/compare/master...ecwpz91:master#diff-dc69f8a6772962ea80798d5ada35e9b7
+[5]: https://github.com/openshift-evangelists/oc-cluster-wrapper/pull/59
