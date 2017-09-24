@@ -16,7 +16,7 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
        dnf install docker -y
 
-2. Grow the file system and set up storage for docker.
+2. Grow the file system and [set up storage for docker][6].
 
        # Start one systemd unit and stop all others
        systemctl isolate multi-user.target
@@ -161,3 +161,4 @@ Pretty neat example of how open source community continues to drive innovation a
 [3]: https://access.redhat.com/downloads/content/290
 [4]: https://github.com/openshift-evangelists/oc-cluster-wrapper/compare/master...ecwpz91:master#diff-dc69f8a6772962ea80798d5ada35e9b7
 [5]: https://github.com/openshift-evangelists/oc-cluster-wrapper/pull/59
+[6]: https://docs.openshift.com/container-platform/latest/install_config/install/host_preparation.html#configuring-docker-storage
