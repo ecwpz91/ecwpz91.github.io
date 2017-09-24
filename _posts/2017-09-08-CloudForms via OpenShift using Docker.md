@@ -6,7 +6,7 @@ date: '2017-09-08 18:25'
 
 # Problem
 
-The following describes the process of trying out CloudForms via Docker locally using an installation of Fedora 26.
+The following describes the process of trying out CloudForms via Docker locally using an installation of Fedora 26, or RHEL.
 
 # Solution
 
@@ -16,55 +16,35 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
        dnf install docker -y
 
-2. Setup block-level storage driver (optional).
+2. Grow the root filesystem and set up storage for docker.
 
-   Why? Performs better for write-heavy workloads (though not as well as Docker volumes).
+       # Start one systemd unit and stop all others
+       systemctl isolate multi-user.target
 
-   **WARNING** Not responsible for direct, indirect, incidental or consequential damages resulting from any defect, error or failure to perform.
+       # Unmount the partition by logging in as root and typing:
+       VG_NAME=
+       LV_NAME=
 
-       # (Re)boot the system
-       # Interrupt the boot loader menu countdown by pressing any key
-       # Move the cursor to the entry to be started
-       # Press 'e' to edit the current entry
-       # Move the cursor to the line that starts with linux16
-       # Append 'rd.break'
-       # Press 'ctrl+x' to boot with these changes, then perform the following:
-
-       # Remount the file system as read/write
-       mount -o rw,remount /sysroot
-
-       # Mount lvm dependencies
-       mount -B /proc /sysroot/proc
-       mount -B /dev /sysroot/dev
-       mount -B /sys /sysroot/sys
-       mount -B /run /sysroot/run
-
-       # Change root directory
-       chroot sysroot/
+       umount /dev/${VG_NAME}/${LV_NAME}
 
        # Resize logical volume
-       lvchange -a y fedora/home
-       lvreduce -r -L -20GB /dev/fedora/home
-       rm -rf /etc/sysconfig/docker-storage
-       echo "VG=fedora" > /etc/sysconfig/docker-storage-setup
+       lvchange -a y ${VG_NAME}/${LV_NAME}
+       lvreduce -r -L -20GB /dev/${VG_NAME}/${LV_NAME}
+       docker-storage-setup --reset
+       echo "VG=${VG_NAME}" >> /etc/sysconfig/docker-storage-setup
        docker-storage-setup
-       lvextend -r -l +100%FREE /dev/fedora/docker-pool
+
+       # Start Docker on boot.
+       systemctl enable docker
+
+       # Manage Docker as a non-root user (optional).
+       groupadd docker
+       usermod -aG docker ${USER}
 
        # Restart the system
-       exit
-       reboot
-
-3. Manage Docker as a non-root user (optional).
-
-       groupadd docker
-       usermod -aG docker $USER
-
-4. Start Docker on boot.
-
-       systemctl enable docker
        systemctl reboot
 
-5. Download the Linux oc binary from [Red Hat Customer Portal][3] and place it on your path.
+3. Download the Linux oc binary from [Red Hat Customer Portal][3] and place it on your path.
 
    Alternatively, create and run the following script:
 
@@ -91,13 +71,13 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
        # Source system wide initialization file
        source /etc/bashrc
 
-6. Check that `sysctl net.ipv4.ip_forward` is set to 1.
+4. Check that `sysctl net.ipv4.ip_forward` is set to 1.
 
-7. Edit the `/etc/sysconfig/docker` file and add `--insecure-registry 172.30.0.0/16` to the `OPTIONS` parameter.
+5. Edit the `/etc/sysconfig/docker` file and add `--insecure-registry 172.30.0.0/16` to the `OPTIONS` parameter.
 
        OPTIONS='--selinux-enabled --insecure-registry 172.30.0.0/16'
 
-8. Create a new firewalld zone for the subnet and grant it access to the API and DNS ports.
+6. Create a new firewalld zone for the subnet and grant it access to the API and DNS ports.
 
        firewall-cmd --permanent --new-zone dockerc
        firewall-cmd --permanent --zone dockerc --add-source 172.17.0.0/16
@@ -106,10 +86,10 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
        firewall-cmd --permanent --zone dockerc --add-port 8053/udp
        firewall-cmd --reload
 
-9. Install oc-cluster wrapper.
+7. Install oc-cluster wrapper.
 
        #!/bin/bash
-       
+
        OC_WRAPPER=$HOME/.local/share/oc-cluster-wrapper
        GITHUB_ZIP=https://github.com/openshift-evangelists/oc-cluster-wrapper/archive/master.zip
 
@@ -130,18 +110,18 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
        # Add completion to PATH
        echo "source ${OC_WRAPPER}/oc-cluster.bash"
 
-10. Start the OpenShift cluster and make the default user a cluster administrator.
+8. Start the OpenShift cluster and make the default user a cluster administrator.
 
         oc-cluster up
         oc login -u system:admin
         oc adm policy add-cluster-role-to-user cluster-admin developer
         oc login -u developer -p devel
 
-11. Deploy CloudForms ontop of OpenShift.
+9. Deploy CloudForms on top of OpenShift.
 
         oc-cluster plugin-install cfme
 
-12. Open a browser and goto `https://cloudforms-cfme.apps.127.0.0.1.nip.io`.
+10. Open a browser and goto `https://cloudforms-cfme.apps.127.0.0.1.nip.io`.
 
 # Troubleshooting
 
