@@ -69,7 +69,7 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
        # Source bash profile
        source $HOME/.bashrc
 
-4. Check that `sysctl net.ipv4.ip_forward` is set to 1.
+4. Check that `sysctl net.ipv4.ip_forward` is set to 1 as root.
 
 5. Edit `/etc/sysconfig/docker` as root and add the following to the `OPTIONS` parameter.
 
