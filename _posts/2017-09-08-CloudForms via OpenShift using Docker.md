@@ -6,7 +6,7 @@ date: '2017-09-08 18:25'
 
 # Problem
 
-The following describes the process of trying out CloudForms via OpenShift locally using Fedora 26.
+The following describes the process of trying out CloudForms  via OpenShift using Docker on Fedora 26.
 
 # Solution
 
