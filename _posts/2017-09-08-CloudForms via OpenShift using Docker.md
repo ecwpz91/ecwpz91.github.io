@@ -64,10 +64,10 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
        chmod +x $TMP_DIR/oc
 
        # Install and setup bash completion
-       oc completion bash > $HOME/.local/bin/oc.bash
+       oc completion bash > $HOME/.local/bin/oc.sh
 
        # Source bash profile
-       source $HOME/.bashrc
+       echo "source $HOME/.local/bin/oc.sh" >> $HOME/.bashrc
 
 4. Check that `sysctl net.ipv4.ip_forward` is set to 1 as root.
 
@@ -115,10 +115,10 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
        echo "PATH=${OC_WRAPPER}:$PATH" >> $HOME/.bashrc
 
        # Create bash completion
-       oc-cluster completion bash > $HOME/.local/bin/oc-cluster.bash
+       oc-cluster completion bash > $HOME/.local/bin/oc-cluster.sh
 
        # Source bash profile
-       source $HOME/.bashrc
+       echo "source $HOME/.local/bin/oc-cluster.sh" >> $HOME/.bashrc
 
 8. Start the OpenShift cluster and make the default user a cluster administrator.
 
