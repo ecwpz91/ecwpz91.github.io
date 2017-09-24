@@ -82,6 +82,14 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
 6. Create a new firewalld zone for the subnet and grant it access to the API and DNS ports.
 
+       # First, check if firewalld is enabled and active
+       systemctl id-enabled firewalld
+       systemctl is-active firewalld
+
+       # If not, do so accordingly
+       systemctl enable firewalld
+       systemctl start firewalld
+
        firewall-cmd --permanent --new-zone dockerc
        firewall-cmd --permanent --zone dockerc --add-source 172.17.0.0/16
        firewall-cmd --permanent --zone dockerc --add-port 8443/tcp
