@@ -71,7 +71,7 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
 4. Check that `sysctl net.ipv4.ip_forward` is set to 1.
 
-5. Edit `/etc/sysconfig/docker` by add the following to the `OPTIONS` parameter.
+5. Edit `/etc/sysconfig/docker` as root and add the following to the `OPTIONS` parameter.
 
        OPTIONS='--selinux-enabled --insecure-registry 172.30.0.0/16 --log-opt max-size=1M --log-opt max-file=3'
 
