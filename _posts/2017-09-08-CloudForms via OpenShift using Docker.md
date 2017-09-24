@@ -68,6 +68,7 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
        # Source bash profile
        echo "source $HOME/.local/bin/oc.sh" >> $HOME/.bashrc
+       source $HOME/.bashrc
 
 4. Check that `sysctl net.ipv4.ip_forward` is set to 1 as root.
 
@@ -119,6 +120,8 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
        # Source bash profile
        echo "source $HOME/.local/bin/oc-cluster.sh" >> $HOME/.bashrc
+       mkdir -p /home/msurbey/.oc/profiles/default
+       source $HOME/.bashrc
 
 8. Start the OpenShift cluster and make the default user a cluster administrator.
 
