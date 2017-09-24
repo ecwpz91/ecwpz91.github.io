@@ -73,9 +73,9 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
 4. Check that `sysctl net.ipv4.ip_forward` is set to 1.
 
-5. Edit the `/etc/sysconfig/docker` file and add `--insecure-registry 172.30.0.0/16` to the `OPTIONS` parameter.
+5. Edit the `/etc/sysconfig/docker` file and add the following to the `OPTIONS` parameter.
 
-       OPTIONS='--selinux-enabled --insecure-registry 172.30.0.0/16'
+       OPTIONS='--selinux-enabled --insecure-registry 172.30.0.0/16 --log-opt max-size=1M --log-opt max-file=3'
 
 6. Create a new firewalld zone for the subnet and grant it access to the API and DNS ports.
 
