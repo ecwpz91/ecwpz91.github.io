@@ -6,7 +6,7 @@ date: '2017-09-08 18:25'
 
 # Problem
 
-The following describes the process of trying out CloudForms via Docker locally using an installation of Fedora 26, or RHEL.
+The following describes the process of trying out CloudForms via Docker locally using an installation of Fedora 26.
 
 # Solution
 
@@ -16,7 +16,7 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
        dnf install docker -y
 
-2. Grow the root filesystem and set up storage for docker.
+2. Grow the root file system and set up storage for docker.
 
        # Start one systemd unit and stop all others
        systemctl isolate multi-user.target
@@ -34,17 +34,17 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
        echo "VG=${VG_NAME}" >> /etc/sysconfig/docker-storage-setup
        docker-storage-setup
 
-       # Start Docker on boot.
+       # Start docker on boot.
        systemctl enable docker
 
-       # Manage Docker as a non-root user (optional).
+       # Manage docker as a non-root user (optional).
        groupadd docker
        usermod -aG docker ${USER}
 
        # Restart the system
        systemctl reboot
 
-3. Download the Linux oc binary from [Red Hat Customer Portal][3] and place it on your path.
+3. Download the Linux `oc` binary from [Red Hat Customer Portal][3] and place it on your path.
 
    Alternatively, create and run the following script:
 
@@ -86,7 +86,7 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
        firewall-cmd --permanent --zone dockerc --add-port 8053/udp
        firewall-cmd --reload
 
-7. Install oc-cluster wrapper.
+7. Install `oc-cluster` wrapper script.
 
        #!/bin/bash
 
@@ -121,7 +121,7 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
 
         oc-cluster plugin-install cfme
 
-10. Open a browser and goto `https://cloudforms-cfme.apps.127.0.0.1.nip.io`.
+10. Open a browser and visit `https://cloudforms-cfme.apps.127.0.0.1.nip.io`.
 
 # Troubleshooting
 
