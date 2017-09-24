@@ -22,8 +22,8 @@ Use [Local Cluster Management][1] along with the [OpenShift "oc cluster up" Wrap
        systemctl isolate multi-user.target
 
        # Unmount the partition by logging in as root and typing:
-       VG_NAME=
-       LV_NAME=
+       VG_NAME=fedora
+       LV_NAME=home
 
        umount /dev/${VG_NAME}/${LV_NAME}
 
