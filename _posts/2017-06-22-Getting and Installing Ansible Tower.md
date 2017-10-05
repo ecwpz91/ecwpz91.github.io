@@ -47,10 +47,21 @@ Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
 
 3. Install [Vagrant][4].
 
+        # Import GPG key
+        wget https://keybase.io/hashicorp/pgp_keys.asc -O hashicorp.asc
+        rpm --import hashicorp.asc
+
+        # Get RPM package
+        wget https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.rpm
+
+        # Check RPM package signature
+        rpm --checksig vagrant_2.0.0_x86_64.rpm
+
+        # Install RPM package
+        rpm --install vagrant_2.0.0_x86_64.rpm
+
         # If you installed gems from Fedora official repo (see notables above)
         dnf install -y vagrant
-
-        # Otherwise, follow Vagrant's online documentation.
 
 4. Set environment variables.
 
