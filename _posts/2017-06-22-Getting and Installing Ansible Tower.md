@@ -42,9 +42,6 @@ Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
         # Add user account to the VirtualBox group
         usermod -a -G vboxusers $USER
 
-        # Start VirtualBox
-        VirtualBox
-
 3. Install [Vagrant][4].
 
         # Import GPG key
