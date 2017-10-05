@@ -18,37 +18,29 @@ The following describes the process of trying out Ansible Tower locally using an
 
 Use Ansible's official Vagrant box to quickly build an Ansible Tower VM.
 
-1. Update kernel version.
+1. Get the most current version of all packages.
 
-        # Enable VirtualBox repo
-        pushd /etc/yum
-        wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
-        popd
-
-        # Get the most current version of all packages
         dnf clean all
         rm -rf /var/cache/dnf/*
         dnf makecache fast
         dnf update -y
         dnf autoremove -y
 
-        # Reboot
-        reboot
-
 2. Install [VirtualBox][3].
 
         # Install dependency packages
-        dnf install -y binutils gcc make patch libgomp glibc-headers glibc-devel \
-                       kernel-headers kernel-devel dkms
+        dnf install gcc make kernel-devel -y
+
+        # Enable VirtualBox repo
+        pushd /etc/yum
+        wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+        popd
 
         # Install latest version
-        dnf install -y VirtualBox-5.1
-
-        # Rebuild kernel modules
-        /usr/lib/virtualbox/vboxdrv.sh setup
+        dnf install VirtualBox-5.1 -y
 
         # Add user account to the VirtualBox group
-        usermod -a -G vboxusers username
+        usermod -a -G vboxusers $USER
 
         # Start VirtualBox
         VirtualBox
