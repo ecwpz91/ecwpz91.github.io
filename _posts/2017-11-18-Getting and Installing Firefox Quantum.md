@@ -83,7 +83,7 @@ What I like about this method of installation, is it sheds some light on where [
 
 Which makes the above scripts a little more interesting because it reveals a trade off between installation portability, and maintenance. Consider what happens when specifications change overtime? Or, how about if there is an update to the tarball source file download URL? Is this really keeping track of? Maybe, or maybe not - it depends on who you ask.
 
-Anyway, hope this helps satisfy ones craving for the latest browser tech, and if you wanted this to only to be available to a single user - that's easy! If this is for yourself, just set `dir=$HOME` in step #1, and `NEW_DESKD="$HOME/.local/share/applications"` in step #2, and drop `sudo` privileges these commands.
+Anyway, hope this helps satisfy ones craving for the latest browser tech, and if you wanted this to only to be available to a single user - that's easy! If this is for yourself, just set `dir=$HOME` in step #1, `NEW_DESKD="$HOME/.local/share/applications"` in step #2, and drop `sudo` privileges for both commands.
 
 See you space cowboy...
 
