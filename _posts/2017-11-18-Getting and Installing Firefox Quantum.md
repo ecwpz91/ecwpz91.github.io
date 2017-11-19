@@ -77,7 +77,7 @@ Firefox Quantum isn't currently available via package manager currently. So, ext
 
 Wahllah! You've successfully installed Firefox Quantum from an archive according to the current Linux Foundation [Filesystem Hierarchy Standard (FHS)][2], and freedesktop.org [desktop entry specification][3].
 
-You could also also use `yum install firefox -y`, but version 57.0 has not been added to the source repository - yet ;)
+You could also also use `yum install firefox -y`, but version 57.0 has not been added to the source repository - yet.
 
 What I like about this method of installation, is it sheds some light on where [Linux distributions endorsed by the Free Software Foundation][4] derive their specifications from.
 
@@ -85,7 +85,7 @@ Which makes the above scripts a little more interesting because it reveals a tra
 
 Anyway, hope this helps satisfy ones craving for the latest browser tech. If you want this only available to yourself - that's easy! Set `dir=$HOME` in step #1, `NEW_DESKD="$HOME/.local/share/applications"` in step #2, and drop `sudo` privileges from both commands.
 
-See you space cowboy...
+See you space cowboy... ;)
 
 [1]: https://www.mozilla.org/en-US/firefox/new/
 [2]: http://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch03s13.html
