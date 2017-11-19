@@ -81,9 +81,7 @@ You could also also use `yum install firefox -y`, but version 57.0 has not been 
 
 Now, what I like about this method of installation, is it sheds some light on where [Linux distributions endorsed by the Free Software Foundation][4] derive their specifications from.
 
-Which makes the above steps a little interesting because it shows a trade off between installation portability, and maintenance. Consider this, what happens when specifications change overtime?
-
-Or, how about if there is an update the tarball source file download URL? Is it really worth troubleshooting? Maybe, or maybe not - it depends on who you ask.
+Which makes the above steps a little interesting because it shows a trade off between installation portability, and maintenance. Consider what happens when specifications change overtime? Or, how about if there is an update the tarball source file download URL? Is it really worth it? Maybe, or maybe not - it depends on who you ask.
 
 Anyway, hope this helps satisfy ones craving for the latest browser tech, and if you wanted Firefox Quantum to be available for one user - that's easy! Just remove `sudo`, set `dir=$HOME` in step #1, and `NEW_DESKD="$HOME/.local/share/applications"` in step #2.
 
