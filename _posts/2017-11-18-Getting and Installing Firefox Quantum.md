@@ -77,9 +77,9 @@ Firefox Quantum isn't currently available via package manager currently. So, ext
 
 Wahllah! You've successfully installed Firefox Quantum from an archive according to the current Linux Foundation [Filesystem Hierarchy Standard (FHS)][2], and freedesktop.org [desktop entry specification][3].
 
-You could also also use `yum install firefox -y`, but version 57.0 has not been added to the source repository yet, and that would defeat the purpose of this blog post ;)
+You could also also use `yum install firefox -y`, but version 57.0 has not been added to the source repository yet, and that would make this exercise somewhat redundant ;)
 
-Now, what I like about this method of installation, is it sheds some light on where [Linux distributions endorsed by the Free Software Foundation][4] derive their specifications from.
+But, what I like about this method of installation, is it sheds some light on where [Linux distributions endorsed by the Free Software Foundation][4] derive their specifications from.
 
 Which makes the above steps a little interesting because it shows a trade off between installation portability, and maintenance. Consider what happens when specifications change overtime? Or, how about if there is an update the tarball source file download URL? Is this really keeping track of? Maybe, or maybe not - it depends on who you ask.
 
