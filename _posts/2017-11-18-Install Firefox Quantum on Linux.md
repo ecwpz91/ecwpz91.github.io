@@ -75,7 +75,7 @@ Also, what I like about this simple exercise is it's educational with regard to 
 
 Which makes the above steps for installation a little more instersting because it improves installation portability! Also, if you wanted Firefox Quantum to be available for one user - it's easy!
 
-Just remove sudo and update the following variable definitions: `dir=$HOME` in Step #1, and `NEW_DESKTOP_FILE="$HOME/.local/share/applications/firefox-quantum.desktop"` in Step #2.
+Just remove `sudo`, set `dir=$HOME` in step #1, and `NEW_DESKTOP_FILE="$HOME/.local/share/applications/firefox-quantum.desktop"` in step #2.
 
 [1]: https://www.mozilla.org/en-US/firefox/new/
 [2]: http://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch03s13.html
