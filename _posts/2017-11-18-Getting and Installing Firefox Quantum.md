@@ -67,7 +67,7 @@ Firefox Quantum isn't currently available via package manager currently. So, ext
 
        #!/bin/bash
 
-       systemctl restart gdm.service
+       sudo systemctl restart gdm.service
 
        # [NOTE] Keep in mind that restarting the service forcibly interrupts any
        # currently running GNOME session of any desktop user who is logged in. This
