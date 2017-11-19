@@ -44,11 +44,11 @@ Firefox Quantum isn't currently available via package manager currently. So, ext
                      NAME_REPL="Firefox Quantum"
 
                      if [[ ! -f $NEW_DESKF ]]; then
-                      if [[ -f $OLD_DESKF ]]; then # Recycle old desktop entry
+                      if [[ -f $OLD_DESKF ]]; then
                        sed "s/Exec\=$EXEC_FIND/Exec\=$EXEC_REPL/g
                             s/Icon\=$ICON_FIND/Icon\=$ICON_REPL/g
                             s/$NAME_FIND/$NAME_REPL/g" $OLD_DESKF > $NEW_DESKF
-                      else                         # Creates new desktop entry
+                      else
                        cat <<EOF > $NEW_DESKF
        [Desktop Entry]
        Version=1.0
