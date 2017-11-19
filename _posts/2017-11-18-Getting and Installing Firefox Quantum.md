@@ -81,7 +81,7 @@ You could also also use `yum install firefox -y`, but version 57.0 has not been 
 
 What I like about this method of installation, is it sheds some light on where [Linux distributions endorsed by the Free Software Foundation][4] derive their specifications from.
 
-Which makes the above scripts a little more interesting because it reveals a trade off between installation portability, and maintenance. Consider what happens when specifications change overtime? Or, how about if there is an update to the tarball source file download URL? Is this really keeping track of? Maybe, or maybe not - it depends on who you ask.
+Which makes the above scripts a little more interesting because it reveals a trade off between installation portability, and maintenance. Consider what happens when specifications change? Or, how about if there is an update to the tarball source file download URL? Is this really keeping track of in the future? Maybe, or maybe not - it depends on who you ask.
 
 Anyway, hope this helps satisfy ones craving for the latest browser tech. If you want this to only to be available to yourself - that's easy! Set `dir=$HOME` in step #1, `NEW_DESKD="$HOME/.local/share/applications"` in step #2, and drop `sudo` privileges for both commands.
 
