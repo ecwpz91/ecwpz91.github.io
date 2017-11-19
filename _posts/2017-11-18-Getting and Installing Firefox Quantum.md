@@ -34,19 +34,19 @@ Firefox Quantum isn't currently available via package manager currently. So, ext
                      NEW_DESKD="/usr/share/applications"
                      NEW_DESKF="$NEW_DESKD/firefox-quantum.desktop"
 
-                     EXEC_REGEX="Exec\=firefox";
-                     EXEC_SUBST="Exec\=\/opt\/firefox\/firefox"
+                     EXEC_REGEX="firefox";
+                     EXEC_SUBST="\/opt\/firefox\/firefox"
 
-                     ICON_REGEX="Icon\=firefox";
-                     ICON_SUBST="Icon\=\/opt\/firefox\/browser\/icons\/mozicon128\.png"
+                     ICON_REGEX="firefox";
+                     ICON_SUBST="\/opt\/firefox\/browser\/icons\/mozicon128\.png"
 
                      NAME_REGEX="Firefox";
                      NAME_SUBST="Firefox Quantum"
 
                      if [[ ! -f $NEW_DESKF ]]; then
                       if [[ -f $OLD_DESKF ]]; then # Recycle old desktop entry
-                       sed "s/$EXEC_REGEX/$EXEC_SUBST/g
-                            s/$ICON_REGEX/$ICON_SUBST/g
+                       sed "s/Exec\=$EXEC_REGEX/Exec\=$EXEC_SUBST/g
+                            s/Icon\=$ICON_REGEX/Icon\=$ICON_SUBST/g
                             s/$NAME_REGEX/$NAME_SUBST/g" $OLD_DESKF > $NEW_DESKF
                       else                         # Creates new desktop entry
                        cat <<EOF > $NEW_DESKF
