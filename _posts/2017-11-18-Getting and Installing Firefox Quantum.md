@@ -85,9 +85,9 @@ Which makes the above steps a little interesting because it shows a trade off be
 
 Or, how about if there is an update the tarball source file download URL? Is it really worth troubleshooting? Maybe, or maybe not - it depends on who you ask.
 
-Anyway, hope this helps satisfy ones craving for the latest browser tech, and if you wanted Firefox Quantum to be available for one user - that's easy!
+Anyway, hope this helps satisfy ones craving for the latest browser tech, and if you wanted Firefox Quantum to be available for one user - that's easy! Just remove `sudo`, set `dir=$HOME` in step #1, and `NEW_DESKD="$HOME/.local/share/applications"` in step #2.
 
-Just remove `sudo`, set `dir=$HOME` in step #1, and `NEW_DESKD="$HOME/.local/share/applications"` in step #2. See you space cowboy...
+See you space cowboy...
 
 [1]: https://www.mozilla.org/en-US/firefox/new/
 [2]: http://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch03s13.html
