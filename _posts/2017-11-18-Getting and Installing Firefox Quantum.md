@@ -24,23 +24,23 @@ Firefox Quantum isn't currently available via package manager currently. So, ext
                      && curl -L "$src" | tar xfj - -C $dir \
                      && unset ost app ver uri src dir'
 
-2. Create a GNOME desktop entry for the add-on application software package.
+2. Create a GNOME desktop entry for our new add-on application software package.
 
        #!/bin/bash
 
-       sudo bash -c 'OLD_DESKTOP_FILE="/usr/share/applications/firefox.desktop"
-                     NEW_DESKTOP_FILE="/usr/share/applications/firefox-quantum.desktop"
+       sudo bash -c 'OLD_DFILE="/usr/share/applications/firefox.desktop"
+                     NEW_DFILE="/usr/share/applications/firefox-quantum.desktop"
                      EXEC_REGEX="Exec\=firefox"; EXEC_SUBST="Exec\=\/opt\/firefox\/firefox"
                      ICON_REGEX="Icon\=firefox"; ICON_SUBST=I"con\=\/opt\/firefox\/browser\/icons\/mozicon128\.png"
                      NAME_REGEX="Firefox"; NAME_SUBST="Firefox Quantum"
 
-                     if [[ ! -f $NEW_DESKTOP_FILE ]]; then
-                      if [[ -f $OLD_DESKTOP_FILE ]]; then # Recycle old desktop entry
+                     if [[ ! -f $NEW_DFILE ]]; then
+                      if [[ -f $OLD_DFILE ]]; then # Recycle old desktop entry
                        sed "s/$EXEC_REGEX/$EXEC_SUBST/g
                             s/$ICON_REGEX/$ICON_SUBST/g
-                            s/$NAME_REGEX/$NAME_SUBST/g" $OLD_DESKTOP_FILE > $NEW_DESKTOP_FILE
+                            s/$NAME_REGEX/$NAME_SUBST/g" $OLD_DFILE > $NEW_DFILE
                       else                                # Creates new desktop entry
-                       cat <<EOF > $NEW_DESKTOP_FILE
+                       cat <<EOF > $NEW_DFILE
        [Desktop Entry]
        Version=1.0
        Name=Firefox Quantum Web Browser
@@ -49,7 +49,6 @@ Firefox Quantum isn't currently available via package manager currently. So, ext
        Icon=/opt/firefox/browser/icons/mozicon128.png
        Terminal=false
        Type=Application
-       MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
        Categories=Network;WebBrowser;
        EOF
        fi
@@ -77,7 +76,7 @@ Which makes the above steps a little more interesting because it demonstrates a 
 
 Or, how about if Mozilla decides to update the tarball source file download URL? Because that never happened before - right...? Anyway, thanks for stopping by, and hope this helps for the time being!
 
-If you wanted Firefox Quantum to be available for one user - that's easy! Just remove `sudo`, set `dir=$HOME` in step #1, and `NEW_DESKTOP_FILE="$HOME/.local/share/applications/firefox-quantum.desktop"` in step #2.
+If you wanted Firefox Quantum to be available for one user - that's easy! Just remove `sudo`, set `dir=$HOME` in step #1, and `NEW_DFILE="$HOME/.local/share/applications/firefox-quantum.desktop"` in step #2.
 
 [1]: https://www.mozilla.org/en-US/firefox/new/
 [2]: http://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch03s13.html
