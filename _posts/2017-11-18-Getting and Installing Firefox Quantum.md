@@ -28,19 +28,28 @@ Firefox Quantum isn't currently available via package manager currently. So, ext
 
        #!/bin/bash
 
-       sudo bash -c 'OLD_DFILE="/usr/share/applications/firefox.desktop"
-                     NEW_DFILE="/usr/share/applications/firefox-quantum.desktop"
-                     EXEC_REGEX="Exec\=firefox"; EXEC_SUBST="Exec\=\/opt\/firefox\/firefox"
-                     ICON_REGEX="Icon\=firefox"; ICON_SUBST=I"con\=\/opt\/firefox\/browser\/icons\/mozicon128\.png"
-                     NAME_REGEX="Firefox"; NAME_SUBST="Firefox Quantum"
+       sudo bash -c 'OLD_DESKD="/usr/share/applications"
+                     OLD_DESKF="$OLD_DESKD/firefox.desktop"
 
-                     if [[ ! -f $NEW_DFILE ]]; then
-                      if [[ -f $OLD_DFILE ]]; then # Recycle old desktop entry
+                     NEW_DESKD="/usr/share/applications"
+                     NEW_DESKF="$NEW_DESKD/firefox-quantum.desktop"
+
+                     EXEC_REGEX="Exec\=firefox";
+                     EXEC_SUBST="Exec\=\/opt\/firefox\/firefox"
+
+                     ICON_REGEX="Icon\=firefox";
+                     ICON_SUBST="Icon\=\/opt\/firefox\/browser\/icons\/mozicon128\.png"
+
+                     NAME_REGEX="Firefox";
+                     NAME_SUBST="Firefox Quantum"
+
+                     if [[ ! -f $NEW_DESKF ]]; then
+                      if [[ -f $OLD_DESKF ]]; then # Recycle old desktop entry
                        sed "s/$EXEC_REGEX/$EXEC_SUBST/g
                             s/$ICON_REGEX/$ICON_SUBST/g
-                            s/$NAME_REGEX/$NAME_SUBST/g" $OLD_DFILE > $NEW_DFILE
+                            s/$NAME_REGEX/$NAME_SUBST/g" $OLD_DESKF > $NEW_DESKF
                       else                                # Creates new desktop entry
-                       cat <<EOF > $NEW_DFILE
+                       cat <<EOF > $NEW_DESKF
        [Desktop Entry]
        Version=1.0
        Name=Firefox Quantum Web Browser
@@ -76,7 +85,7 @@ Which makes the above steps a little more interesting because it demonstrates a 
 
 Or, how about if Mozilla decides to update the tarball source file download URL? Because that never happened before - right...? Anyway, thanks for stopping by, and hope this helps for the time being!
 
-If you wanted Firefox Quantum to be available for one user - that's easy! Just remove `sudo`, set `dir=$HOME` in step #1, and `NEW_DFILE="$HOME/.local/share/applications/firefox-quantum.desktop"` in step #2.
+If you wanted Firefox Quantum to be available for one user - that's easy! Just remove `sudo`, set `dir=$HOME` in step #1, and `NEW_DESKF="$HOME/.local/share/applications/firefox-quantum.desktop"` in step #2.
 
 [1]: https://www.mozilla.org/en-US/firefox/new/
 [2]: http://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch03s13.html
