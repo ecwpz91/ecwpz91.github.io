@@ -10,7 +10,7 @@ The following describes the process of trying out Firefox Quantum using an insta
 
 # Solution
 
-Firefox Quantum isn't currently available via package manager - yet. Extract the [Firefox Quantum][1] tarball source file into the `/opt` directory.
+Firefox Quantum isn't currently available via package manager currently. So, extract the [Firefox Quantum][1] tarball source file into the `/opt` directory.
 
 1. Open a terminal, and issue this command to download & extract Mozilla's latest browser.
 
@@ -69,13 +69,15 @@ Firefox Quantum isn't currently available via package manager - yet. Extract the
 
 Wahllah! You've successfully installed Firefox Quantum from an archive according to the current Linux Foundation [Filesystem Hierarchy Standard (FHS)][2], and freedesktop.org [desktop entry specification][3].
 
-You could also also use `yum install firefox -y`,
+You could also also use `yum install firefox -y`, but version 57.0 has not been added to the source repository - yet. But, that would defeat the purpose of this simple exercise!
 
-Also, what I like about this simple exercise is it's educational with regard to where [Linux distributions endorsed by the Free Software Foundation][4] derive their specifications from.
+What I like about this method of installation, is it sheds some light on where [Linux distributions endorsed by the Free Software Foundation][4] derive their specifications from.
 
-Which makes the above steps for installation a little more instersting because it improves installation portability! Also, if you wanted Firefox Quantum to be available for one user - it's easy!
+Which makes the above steps a little more interesting because it demonstrates a trade offs between installation portability, and maintenance. Consider this, what happens when specifications change overtime?
 
-Just remove `sudo`, set `dir=$HOME` in step #1, and `NEW_DESKTOP_FILE="$HOME/.local/share/applications/firefox-quantum.desktop"` in step #2.
+Or, how about if Mozilla decides to update the tarball source file download URL? Because that never happened before - right...? Anyway, thanks for stopping by, and hope this helps for the time being!
+
+If you wanted Firefox Quantum to be available for one user - that's easy! Just remove `sudo`, set `dir=$HOME` in step #1, and `NEW_DESKTOP_FILE="$HOME/.local/share/applications/firefox-quantum.desktop"` in step #2.
 
 [1]: https://www.mozilla.org/en-US/firefox/new/
 [2]: http://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch03s13.html
