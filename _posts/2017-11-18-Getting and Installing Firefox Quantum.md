@@ -85,7 +85,7 @@ Which makes the above steps a little more interesting because it demonstrates a 
 
 Or, how about if Mozilla decides to update the tarball source file download URL? Because that never happened before - right...? Anyway, thanks for stopping by, and hope this helps for the time being!
 
-If you wanted Firefox Quantum to be available for one user - that's easy! Just remove `sudo`, set `dir=$HOME` in step #1, and `NEW_DESKF="$HOME/.local/share/applications/firefox-quantum.desktop"` in step #2.
+If you wanted Firefox Quantum to be available for one user - that's easy! Just remove `sudo`, set `dir=$HOME` in step #1, and `NEW_DESKD="$HOME/.local/share/applications"` in step #2.
 
 [1]: https://www.mozilla.org/en-US/firefox/new/
 [2]: http://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch03s13.html
