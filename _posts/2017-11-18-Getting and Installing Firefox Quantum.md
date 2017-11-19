@@ -48,7 +48,7 @@ Firefox Quantum isn't currently available via package manager currently. So, ext
                        sed "s/$EXEC_REGEX/$EXEC_SUBST/g
                             s/$ICON_REGEX/$ICON_SUBST/g
                             s/$NAME_REGEX/$NAME_SUBST/g" $OLD_DESKF > $NEW_DESKF
-                      else                                # Creates new desktop entry
+                      else                         # Creates new desktop entry
                        cat <<EOF > $NEW_DESKF
        [Desktop Entry]
        Version=1.0
