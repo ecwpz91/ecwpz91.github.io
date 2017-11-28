@@ -10,7 +10,7 @@ The following describes the process of trying out Firefox Quantum using an insta
 
 # Solution
 
-Firefox Quantum isn't currently available via package manager currently. So, extract the [Firefox Quantum][1] tarball source file into the `/opt` directory.
+Firefox Quantum isn't available via package manager currently. So, extract the [Firefox Quantum][1] tarball source file into the `/opt` directory.
 
 1. Open a terminal, and issue this command to download & extract Mozilla's latest browser.
 
