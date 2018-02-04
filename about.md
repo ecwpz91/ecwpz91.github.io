@@ -4,10 +4,8 @@ title: About
 permalink: /about/
 ---
 
-**Michael Surbey** is a Cloud Solutions Architect at Red Hat Red Hat, Inc.
+**Michael Surbey** is a {{ site.vocation }} at Red Hat in the Washington, D.C. metropolitan area. Mike is passionate about investigating, researching, teaching, counseling, supporting and advising U.S. public sector customers, contributors, and partners on open source solution adoption for making the world a better place.
 
-I've developed this blog in order to contribute, document, and share my daily adventures/endeavors with others.
+With a background in development, design, and management of enterprise IT-driven solutions, Mike has proven expertise in helping government departments and agencies create better a citizen experience the open source way.
 
-My interests include athletics, finance, tutoring, and research on a variety of technical topics such as Docker containers, CI/CD pipleline implementation, coding, database management systems, mobile app development, networking, and security.
-
-If you'd like to check out my recent bookmarks, click [here](http://bit.ly/2afSCMI).
+Mike has created this blog in order to document and share his latest interests with others. Enjoy!

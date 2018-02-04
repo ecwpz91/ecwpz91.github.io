@@ -7,15 +7,16 @@
 
 # Site settings
 title: Michael Surbey
-vocation: Cloud Solutions Architect
+vocation: Solutions Architect
 email: msurbey@redhat.com
 description: > # this means to ignore newlines until "baseurl:"
   Welcome to my personal blog! Here you can find tips, tricks, and how-to's
   for the modern-day IT professional and polymath.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
+pinboard_username: msurbey
 twitter_username: ecwpz91
-github_username:  ecwpz91
+github_username: ecwpz91
 
 # Build settings
 markdown: kramdown
