@@ -3,6 +3,7 @@ layout: post
 title: "Creating a File System"
 date: "2017-05-17 00:36"
 ---
+
 # Problem
 
 The following describes the process of putting a file system on top of a partition with `mkfs` using an installation of RHEL/CentOS.
