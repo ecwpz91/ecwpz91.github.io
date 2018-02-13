@@ -1,7 +1,7 @@
 title: Mike Surbey's Home Page
 description: > # this means to ignore newlines until "baseurl:"
   Welcome to my blog. Here you can find tips, tricks, and how-to's
-  on topics I see as noteworthy, enjoy!
+  on topics I see as noteworthy. Enjoy!
 baseurl:
 url:
 pinboard_username: msurbey
