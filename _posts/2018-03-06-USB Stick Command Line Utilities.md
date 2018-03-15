@@ -6,13 +6,12 @@ date: "2018-03-06 16:15"
 
 # Problem
 
-The following describes some command line utilities encountered when dealing with USB devices on an installation of RHEL/CentOS.
+The following describes some command line utilities encountered when dealing with USB devices on an installation of Fedora/RHEL/CentOS.
 
 # Solution
 
-1. Before plugging in a USB stick (done later), open a terminal, login as root via `su -`.
-
-2. First issue `df -HT` to list our system's currently attached mount points.
+1. Open a terminal and type the command `su -` to login as root user.
+2. Type the command `df -HT` to get the list of attached mount points.
 
        Filesystem            Type      Size  Used Avail Use% Mounted on
        /dev/mapper/rhel-root xfs       xxxG  xxxG   xxG   x% /
@@ -25,7 +24,7 @@ The following describes some command line utilities encountered when dealing wit
        tmpfs                 tmpfs     xxxG     x  xxxG   x% /run/user/0
        tmpfs                 tmpfs     xxxG     x  xxxG   x% /run/user/543218
 
-3. Next type `lsblk -f` to examine the list of attached block devices.
+3. Type the command `lsblk -f` to get the list of attached block devices.
 
        NAME          FSTYPE      LABEL UUID                      MOUNTPOINT
        sda
@@ -35,7 +34,7 @@ The following describes some command line utilities encountered when dealing wit
          ├─rhel-swap swap              xxx-xxx-xxx-xxx-xxx-xxx   [SWAP]
          └─rhel-home xfs               xxx-xxx-xxx-xxx-xxx-xxx   /home
 
-4. Then get the list of attached disk partitions to our system using `fdisk -l`.
+4. Type the command `fdisk -l` to get list of attached disk partitions.
 
        Disk /dev/sda: xxx GB, xxx bytes, xxx sectors
        Units = sectors of 1 * 512 = 512 bytes
@@ -44,29 +43,27 @@ The following describes some command line utilities encountered when dealing wit
        Disk label type: dos
        Disk identifier: 0x0006f012
 
-          Device Boot      Start         End      Blocks   Id  System
-       /dev/sda1   *         xxx         xxx         xxx   83  Linux
-       /dev/sda2             xxx         xxx         xxx   8e  Linux LVM
+       Device Boot      Start         End      Blocks   Id  System
+       /dev/sda1   *      xxx         xxx         xxx   83  Linux
+       /dev/sda2          xxx         xxx         xxx   8e  Linux LVM
 
        Disk /dev/mapper/rhel-root: xxx GB, xxx bytes, xxx sectors
        Units = sectors of 1 * 512 = 512 bytes
        Sector size (logical/physical): 512 bytes / 512 bytes
        I/O size (minimum/optimal): 512 bytes / 512 bytes
 
-
        Disk /dev/mapper/rhel-swap: xxx GB, xxx bytes, xxx sectors
        Units = sectors of 1 * 512 = 512 bytes
        Sector size (logical/physical): 512 bytes / 512 bytes
        I/O size (minimum/optimal): 512 bytes / 512 bytes
-
 
        Disk /dev/mapper/rhel-home: xxx GB, xxx bytes, xxx sectors
        Units = sectors of 1 * 512 = 512 bytes
        Sector size (logical/physical): 512 bytes / 512 bytes
        I/O size (minimum/optimal): 512 bytes / 512 bytes
 
-5. OK, plug in a USB.
-5. You can check for any issues with attaching our hardware device via `dmesg | tail -20`.
+5. Plug in a USB stick.
+6. Type the command `dmesg | tail -20` to any issues with attaching the device.
 
        ...
        [ 4654.519577] usb-storage 1-4:1.0: USB Mass Storage device detected
@@ -81,50 +78,25 @@ The following describes some command line utilities encountered when dealing wit
        [ 4655.526010] sd 5:0:0:0: [sdb] Write cache: disabled, read cache: enabled
        [ 4655.542887] sd 5:0:0:0: [sdb] Attached SCSI removable disk
 
-   The above looks good to me, but I suggest repeating the steps 2-4 again for good measure.
-
-7. Alright, let's make sure the device isn't mounted using `findmnt /dev/sdb`.
-
-   Our output should be null, but if you see something similar to the following:
+7. Type the command `findmnt /dev/sdb` to see if the device is mounted or not. Expected output is either nothing if the device is not mounted, or similar to the following output if the device is mounted.
 
        TARGET   SOURCE   FSTYPE  OPTIONS
        /mnt/iso /dev/sdb    fat  ro,relatime
 
-   Then use `umount /mnt/iso` to unmount the device.
+   **Please note the `TARGET` and `SOURCE` column if the device is mounted.**
 
-9. Once the USB device has been unmounted, we can begin to manipulate it using `dd`, `fdisk` (<= 4GB), and `gdisk` (> 4GB) like so:
+8. Type the command `umount TARGET` to unmount the device (e.g. `umount /dev/sdb`).
+9. Type the command `dd if=/dev/${DEVICE} of=/root/diskfile bs=1MB count=1` to backup the first megabyte of raw blocks of the device for easy rollback.
+10. Type the command `cp /etc/fstab /root/fstab` to backup the static information about the filesystems before manipulating the device disk partition table.
+11. Type the command `fdisk SOURCE` (<=4GB) or `gdisk SOURCE` (>4GB) to begin manipulating the device disk partition table. For example, the following describes formatting a 4GB USB stick with FAT32:
 
-   Use Case #1: Live USB Boot Media
+   Format the USB stick by copying zero or random number (secure, but takes longer) data to the target file system.
 
-       dd if=/root/image.iso of=/dev/sdb bs=8M status=progress oflag=direct
+         # Zeros, zilch, or null
+         dd if=/dev/zero of=/dev/sdb bs=512k
 
-   Wait for `dd` to finish writing the image to the device and it is ready to be used as a boot device.
-
-   Use Case #2: Complete USB Wipe
-
-       # Zero data
-       dd if=/dev/zero of=/dev/sdb bs=512k
-
-       # Nandom numbers (secure, but takes longer)
-       dd if=/dev/urandom of=/dev/sdb bs=512k
-
-   Use Case #3: USB Partition Wipe
-
-         # Backup the first megabyte of raw blocks for easy rollback
-         dd if=/dev/${DEVICE} of=/root/diskfile bs=1MB count=1
-
-          # Backup the fstab file as well
-          cp /etc/fstab /root/fstab
-
-          # Zeros
-          dd if=/dev/zero of=/dev/sdb1 bs=512k
-
-          # Numbers
-          dd if=/dev/urandom of=/dev/sdb1 bs=512k
-
-   **Notice** the number `1` after `sdb` (more on that later).
-
-   Use Case #4: Manipulate the attached device partition table via `fdisk /dev/sdb`. For instance, the following describes how to create a FAT32 USB drive.
+         # Randomized numbers
+         dd if=/dev/urandom of=/dev/sdb bs=512k
 
     Create a new primary partition.
 
@@ -178,7 +150,7 @@ The following describes some command line utilities encountered when dealing wit
 
          mkfs.vfat /dev/sdb1
 
-    Reattach device without removal (laziness).
+    Reattach device without removal.
 
          eject /dev/sdb1; sleep 1; eject -t /dev/sdb1
 
@@ -186,9 +158,26 @@ The following describes some command line utilities encountered when dealing wit
 
          mount /dev/sdb1 /mnt/dvdiso/
 
+8. Copy a file (from standard input to standard output, by default) with a changeable I/O block size, while optionally performing conversions on it.
+
+       # Example of creating a USB boot media
+       dd if=/root/image.iso of=/dev/sdb bs=8M status=progress oflag=direct
+
 # Summary
 
-command line utility, which is available on most Unix-like operating systems, including Linux distributions and OS X, and [has a Windows port available too](http://www.chrysocome.net/dd).
+It has to do with the way linux (and all unixes) name their drives, much in the way that windows uses C:, D:, etc. (NOTE: This is what we call a metaphor. In other words, a blatant lie that helps people understand without being even remotely accurate. Read on for a more detailed explanation...)
+
+/dev/ is the part in the unix directory tree that contains all "device" files -- unix traditionally treats just about everything you can access as a file to read from or write to.
+sd originally identified a SCSI device, but since the wildgrowth of USB (and other removable) data carriers it became a catch-all for any block device (another unix term; in this context, anything capable of carrying data) that wasn't already accessible via IDE. When SATA came around, the developers figured it'd be much easier and much more convenient for everyone to add it into the existing framework rather than write a whole new framework.
+The letter immediately after sd signifies the order in which it was first found -- a,b,c...z, Aa...Az... etc. (Not that there are many situations in the real world where more than 26 discrete block devices are on the same bus...)
+Finally, the number after that signifies the partition on the device. Note that because of the rather haphazard way PCs handle partitioning there are only four "primary" partitions, so the numbering will be slightly off from the actual count. This isn't a terrible problem as the main purpose for the naming scheme is to have a unique and recognizable identifier for each partition found in this manner...
+So /dev/sda9 means the ninth partition on the first drive.
+
+command line utility, which is available on most Unix-like operating systems, including Linux distributions and OS X, and [has a Windows port available too][2].
 
 
 Use the `dd` command to overwrite an installation ISO image directly to the USB device.
+
+
+[1]: https://fedoraproject.org/wiki/How_to_create_and_use_Live_USB#Command_line_.22direct_write.22_method_.28most_operating_systems.2C_non-graphical.2C_destructive.29
+[2]: http://www.chrysocome.net/dd
