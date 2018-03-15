@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Linux Device Command Line Utilities"
-date: "2018-03-06 16:15"
+date: "2018-03-15 14:45"
 ---
 
 # Problem
@@ -86,7 +86,7 @@ The following describes some command line utilities encountered when dealing wit
    **Please note the `TARGET` and `SOURCE` column if the device is mounted.**
 
 8. Type the command `umount TARGET` to unmount the target (e.g. `/mnt/iso`) filesystem.
-11. Use the `dd` command to format the USB stick by copying zeros, random numbers (secure, but takes longer), or a file to the target file system.
+9. Use the `dd` command to format the USB stick by copying zeros, random numbers (secure, but takes longer), or a file to the target file system.
 
          # Zeros, zilch, or null
          dd if=/dev/zero of=/dev/sdb bs=512k
@@ -97,7 +97,7 @@ The following describes some command line utilities encountered when dealing wit
          # Copying a file (USB boot media)
          dd if=/root/image.iso of=/dev/sdb bs=8M status=progress oflag=direct
 
-12. Type the command `fdisk SOURCE` (<=4GB) or `gdisk SOURCE` (>4GB) to begin manipulating the device disk partition table. The following describes how to create a 4GB USB stick with a FAT32 filesystem after wiping the device with zero data.
+10. Type the command `fdisk SOURCE` (<=4GB) or `gdisk SOURCE` (>4GB) to begin manipulating the device disk partition table. The following describes how to create a 4GB USB stick with a FAT32 filesystem after wiping the device with zero data.
 
     Create a new primary partition.
 
