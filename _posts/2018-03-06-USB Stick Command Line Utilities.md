@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "USB Stick Command Line Utilities"
+title: "Linux Device Command Line Utilities"
 date: "2018-03-06 16:15"
 ---
 
 # Problem
 
-The following describes some command line utilities encountered when dealing with USB devices on an installation of Fedora/RHEL/CentOS.
+The following describes some command line utilities encountered when dealing with USB devices on an installation of RHEL/CentOS.
 
 # Solution
 
@@ -85,18 +85,19 @@ The following describes some command line utilities encountered when dealing wit
 
    **Please note the `TARGET` and `SOURCE` column if the device is mounted.**
 
-8. Type the command `umount TARGET` to unmount the device (e.g. `umount /dev/sdb`).
-9. Type the command `dd if=/dev/${DEVICE} of=/root/diskfile bs=1MB count=1` to backup the first megabyte of raw blocks of the device for easy rollback.
-10. Type the command `cp /etc/fstab /root/fstab` to backup the static information about the filesystems before manipulating the device disk partition table.
-11. Type the command `fdisk SOURCE` (<=4GB) or `gdisk SOURCE` (>4GB) to begin manipulating the device disk partition table. For example, the following describes formatting a 4GB USB stick with FAT32:
-
-   Format the USB stick by copying zero or random number (secure, but takes longer) data to the target file system.
+8. Type the command `umount TARGET` to unmount the target (e.g. `/mnt/iso`) filesystem.
+11. Use the `dd` command to format the USB stick by copying zeros, random numbers (secure, but takes longer), or a file to the target file system.
 
          # Zeros, zilch, or null
          dd if=/dev/zero of=/dev/sdb bs=512k
 
          # Randomized numbers
          dd if=/dev/urandom of=/dev/sdb bs=512k
+
+         # Copying a file (USB boot media)
+         dd if=/root/image.iso of=/dev/sdb bs=8M status=progress oflag=direct
+
+12. Type the command `fdisk SOURCE` (<=4GB) or `gdisk SOURCE` (>4GB) to begin manipulating the device disk partition table. The following describes how to create a 4GB USB stick with a FAT32 filesystem after wiping the device with zero data.
 
     Create a new primary partition.
 
@@ -146,8 +147,13 @@ The following describes some command line utilities encountered when dealing wit
          Calling ioctl() to re-read partition table.
          Syncing disks.   
 
-    Create a FAT32 file system.
+    Either reboot, or use the following command to write the changes to the kernel.
 
+         partprobe
+
+    Create a FAT32 file system on our new primary partition.
+
+         yum -y install dosfstools
          mkfs.vfat /dev/sdb1
 
     Reattach device without removal.
@@ -158,26 +164,34 @@ The following describes some command line utilities encountered when dealing wit
 
          mount /dev/sdb1 /mnt/dvdiso/
 
-8. Copy a file (from standard input to standard output, by default) with a changeable I/O block size, while optionally performing conversions on it.
+    Unmount the device.
 
-       # Example of creating a USB boot media
-       dd if=/root/image.iso of=/dev/sdb bs=8M status=progress oflag=direct
+         unmount /dev/sdb
+
+    Backup the first megabyte of raw blocks of the device.
+
+         dd if=/dev/sdb of=/root/diskfile bs=1MB count=1
+
+    Backup the static information about the filesystems.
+
+         cp /etc/fstab /root/fstab
 
 # Summary
 
-It has to do with the way linux (and all unixes) name their drives, much in the way that windows uses C:, D:, etc. (NOTE: This is what we call a metaphor. In other words, a blatant lie that helps people understand without being even remotely accurate. Read on for a more detailed explanation...)
+While many Linux distros have tools like liveusb-creator on Fedora, I prefer the above tools due to cross-platform compatibility reasons.
 
-/dev/ is the part in the unix directory tree that contains all "device" files -- unix traditionally treats just about everything you can access as a file to read from or write to.
-sd originally identified a SCSI device, but since the wildgrowth of USB (and other removable) data carriers it became a catch-all for any block device (another unix term; in this context, anything capable of carrying data) that wasn't already accessible via IDE. When SATA came around, the developers figured it'd be much easier and much more convenient for everyone to add it into the existing framework rather than write a whole new framework.
-The letter immediately after sd signifies the order in which it was first found -- a,b,c...z, Aa...Az... etc. (Not that there are many situations in the real world where more than 26 discrete block devices are on the same bus...)
-Finally, the number after that signifies the partition on the device. Note that because of the rather haphazard way PCs handle partitioning there are only four "primary" partitions, so the numbering will be slightly off from the actual count. This isn't a terrible problem as the main purpose for the naming scheme is to have a unique and recognizable identifier for each partition found in this manner...
-So /dev/sda9 means the ninth partition on the first drive.
+For instance, the `dd` command line utility, is available on most Unix-like operating systems including Linux distributions and OS X, and [has a Windows port available too][2].
 
-command line utility, which is available on most Unix-like operating systems, including Linux distributions and OS X, and [has a Windows port available too][2].
+Also, both Unix/Linux systems use a similar device naming scheme for disk drives. That is, [`/dev/`][3] directory is the location of special or device files, `sd` identifies a device that can store data, `b`, the letter immediately after `/dev/sd` signifies the order in which it was first found (e.g. `sda`,`sdb` ... `sdAa`), and `1`, the number after `/dev/sdb` identifies the partition on the device, so `/dev/sda2` would mean the second partition on the first device
 
+Shout out to this [TL;DR][4] on explaining how this naming convention came about. Thanks!
 
-Use the `dd` command to overwrite an installation ISO image directly to the USB device.
-
+Anyways, if you're looking for more information on partitions and filesystems in general check out my past posts on [Creating a Master Boot Record (MBR) Partition][5], [Creating a GUID Partition Table (GPT) Partition][6], and [Creating a File System][7].
 
 [1]: https://fedoraproject.org/wiki/How_to_create_and_use_Live_USB#Command_line_.22direct_write.22_method_.28most_operating_systems.2C_non-graphical.2C_destructive.29
 [2]: http://www.chrysocome.net/dd
+[3]: http://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch03s06.html
+[4]: https://superuser.com/questions/558156/what-does-dev-sda-for-linux-mean?answertab=votes#tab-top
+[5]: https://ecwpz91.github.io/2017/05/16/Creating-a-Master-Boot-Record-Partition.html
+[6]: https://ecwpz91.github.io/2017/05/16/Creating-a-GUID-Partition-Table-Partition.html
+[7]: https://ecwpz91.github.io/2017/05/17/Creating-a-File-System.html
