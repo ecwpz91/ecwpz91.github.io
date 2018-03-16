@@ -13,26 +13,26 @@ The following describes some command line utilities encountered when dealing wit
 1. Open a terminal and type the command `su -` to login as root user.
 2. Type the command `df -HT` to get the list of attached mount points.
 
-       Filesystem            Type      Size  Used Avail Use% Mounted on
-       /dev/mapper/rhel-root xfs       xxxG  xxxG   xxG   x% /
-       devtmpfs              devtmpfs   xxG     x   xxG   x% /dev
-       tmpfs                 tmpfs      xxG     x   xxG   x% /dev/shm
-       tmpfs                 tmpfs      xxG  xxxM   xxG   x% /run
-       tmpfs                 tmpfs      xxG     x   xxG   x% /sys/fs/cgroup
-       /dev/sda1             xfs       xxxG  xxxM  xxxM  xx% /boot
-       /dev/mapper/rhel-home xfs       xxxG   xxM  xxxG  xx% /home
-       tmpfs                 tmpfs     xxxG     x  xxxG   x% /run/user/0
-       tmpfs                 tmpfs     xxxG     x  xxxG   x% /run/user/543218
+       Filesystem            Type     Size Used Avail Use% Mounted on
+       /dev/mapper/rhel-root xfs      xxxG xxxG   xxG   x% /
+       devtmpfs              devtmpfs  xxG    x   xxG   x% /dev
+       tmpfs                 tmpfs     xxG    x   xxG   x% /dev/shm
+       tmpfs                 tmpfs     xxG xxxM   xxG   x% /run
+       tmpfs                 tmpfs     xxG    x   xxG   x% /sys/fs/cgroup
+       /dev/sda1             xfs      xxxG xxxM  xxxM  xx% /boot
+       /dev/mapper/rhel-home xfs      xxxG  xxM  xxxG  xx% /home
+       tmpfs                 tmpfs    xxxG    x  xxxG   x% /run/user/0
+       tmpfs                 tmpfs    xxxG    x  xxxG   x% /run/user/543218
 
 3. Type the command `lsblk -f` to get the list of attached block devices.
 
-       NAME          FSTYPE      LABEL UUID                      MOUNTPOINT
+       NAME          FSTYPE      LABEL UUID                    MOUNTPOINT
        sda
-       ├─sda1        xfs               xxx-xxx-xxx-xxx-xxx-xxx   /boot
+       ├─sda1        xfs               xxx-xxx-xxx-xxx-xxx-xxx /boot
        └─sda2        LVM2_member       xxx-xxx-xxx-xxx-xxx-xxx
-         ├─rhel-root xfs               xxx-xxx-xxx-xxx-xxx-xxx   /
-         ├─rhel-swap swap              xxx-xxx-xxx-xxx-xxx-xxx   [SWAP]
-         └─rhel-home xfs               xxx-xxx-xxx-xxx-xxx-xxx   /home
+         ├─rhel-root xfs               xxx-xxx-xxx-xxx-xxx-xxx /
+         ├─rhel-swap swap              xxx-xxx-xxx-xxx-xxx-xxx [SWAP]
+         └─rhel-home xfs               xxx-xxx-xxx-xxx-xxx-xxx /home
 
 4. Type the command `fdisk -l` to get list of attached disk partitions.
 
