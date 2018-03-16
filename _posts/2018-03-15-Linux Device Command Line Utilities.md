@@ -85,7 +85,7 @@ The following describes some command line utilities encountered when dealing wit
 
    **Please note the `TARGET` and `SOURCE` column if the device is mounted.**
 
-8. Type the command `umount TARGET` to unmount the target (e.g. `/mnt/iso`) filesystem.
+8. Type the command `umount TARGET` to unmount the target (e.g. `unmount /mnt/iso`) filesystem.
 9. Use the `dd` command to format the USB stick by copying zeros, random numbers (secure, but takes longer), or a file to the target file system.
 
          # Zeros, zilch, or null
