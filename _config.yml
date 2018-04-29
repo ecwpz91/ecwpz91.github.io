@@ -24,7 +24,7 @@ exclude:
   - LICENSE
   - package.json
   - README.md
-plugins:
+plugins_dir:
   - jemoji
 port: 4000
 host: 0.0.0.0
