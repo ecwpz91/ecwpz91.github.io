@@ -2,29 +2,22 @@ title: Mike Surbey's Home Page
 description: > # this means to ignore newlines until "baseurl:"
   Welcome to my blog. Here you can find tips, tricks, and how-to's
   on topics I see as noteworthy. Enjoy!
-baseurl:
-url:
-pinboard_username: msurbey
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: ecwpz91
 github_username: ecwpz91
+pinboard_username: msurbey
+linkedin_username: msurbey
+
+# Build settings
 markdown: kramdown
+theme: minima
+gems:
+  - jekyll-feed
 exclude:
-  - fonts
-  - grunt
-  - js
-  - less
-  - node_modules
-  - script
-  - vendor
+  - docs
   - _mdwriter.cson
-  - Dockerfile
   - Gemfile
   - Gemfile.lock
-  - Gruntfile.js
-  - LICENSE
-  - package.json
-  - README.md
-plugins_dir:
-  - jemoji
 port: 4000
 host: 0.0.0.0

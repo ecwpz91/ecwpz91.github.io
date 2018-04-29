@@ -3,7 +3,6 @@
   <div class="wrapper">
 
     <div class="footer-col-wrapper">
-
       <div class="footer-col footer-col-3">
         <ul class="social-media-list">
           {% if site.github_username %}
@@ -23,19 +22,20 @@
             {% include icon-pinboard.html username=site.pinboard_username %}
           </li>
           {% endif %}
+
+          {% if site.linkedin_username %}
+          <li>
+            {% include icon-linkedin.html username=site.linkedin_username %}
+          </li>
+          {% endif %}
         </ul>
       </div>
 
       <div class="footer-col footer-col-3">
-        <p>{{ site.description }}</p>
+        <p>{{ site.description | escape }}</p>
       </div>
     </div>
 
   </div>
 
 </footer>
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/dist/js/bootstrap.min.js"></script>
