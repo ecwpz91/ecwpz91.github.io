@@ -57,7 +57,7 @@ By default, the extent size is 4MiB. Also, the PE size is **always** specified a
 
 When working with an Ext4 file system, a LE size is used. The LE size defines the size of the building blocks used to create logical volumes.
 
-:information_source: The extent size on LVM are in no way related to the extent sizes that are used on the file systems.
+**Notice** the extent size on LVM is in no way related to the extent sizes that are used on the file systems.
 
 ## Layer 3: Logical Volume (LV)
 
