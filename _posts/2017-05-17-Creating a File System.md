@@ -37,7 +37,7 @@ VFAT   | &nbsp;File system that is the functional equivalent of FAT32.
         # Format XFS shorthand
         mkfs.xfs /dev/${DEVICE}
 
-    :information_source: The `-t` option will specify the file system type.
+    **Notice** the `-t` option will specify the file system type.
 
 # Summary
 
