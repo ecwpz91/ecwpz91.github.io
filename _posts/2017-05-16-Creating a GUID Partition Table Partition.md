@@ -54,7 +54,7 @@ DEVICE     |
 
         partprobe
 
-   **Notice** if you experience any issues with `partprobe`, reboot the system.
+    **Notice** if you experience any issues with `partprobe`, reboot the system.
 
 # Summary
 
