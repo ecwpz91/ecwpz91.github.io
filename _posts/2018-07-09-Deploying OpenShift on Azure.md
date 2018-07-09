@@ -10,7 +10,7 @@ The following describes some lessons learned when trying out [Red Hat OpenShift 
 
 # Solution
 
-Here are a few things you should consider prior to trying it out yourself.
+Here are a few things you should consider prior to going through it yourself.
 
 1. [Azure free account](https://azure.microsoft.com/en-us/free/)
 
