@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "Deploying OpenShift on Azure"
-date: "2018-07-09 10:08"
+date: "2018-07-09 5:56"
 ---
 
 # Problem
