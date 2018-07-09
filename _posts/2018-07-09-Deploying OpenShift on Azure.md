@@ -20,7 +20,7 @@ Here are a few things you should consider prior to trying it out yourself.
 
 2. Create a resource group
 
-    See StackOverflow post on [not able to set same name for Azure key Vault in different subscription](https://stackoverflow.com/questions/37563126/not-able-to-set-same-name-for-azure-key-vault-in-different-subscription).
+    See post on [not able to set same name for Azure key Vault in different subscription](https://stackoverflow.com/questions/37563126/not-able-to-set-same-name-for-azure-key-vault-in-different-subscription).
 
     The solution in my case was to register a missing resource provider, like so:
 
