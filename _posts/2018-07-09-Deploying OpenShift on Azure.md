@@ -52,6 +52,8 @@ Here are a few things you should consider prior to trying it out yourself.
 
     Basically, I needed to deploy nodes that support premo storage - doh.
 
+    The point though is, I would've saved myself some time if I had either broken the ARM template into multiple small subsections that got assembled post- modification, or Googled for a tool that I could use to update the template and redeploy afterwards.
+
 # Summary
 
 Let me start by saying I've found the experience of deploying [OpenShift on Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-get-started) to be quite pleasurable.
