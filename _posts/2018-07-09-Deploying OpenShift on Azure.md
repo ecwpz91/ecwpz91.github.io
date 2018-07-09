@@ -46,7 +46,7 @@ Here are a few things you should consider prior to trying it out yourself.
 
     Hindsight is 20/20, and if you are an OpenShift guru, but not an Azure expert... Expect to find post- deployment issues with things like storage provisioning.
 
-    For instance, I didn't understand the different Azure storage tiers, and when I tried to deploy OpenShift and afterwards the pods backed by persistent storage it'll failed since `Premium_LRS` is not supported for [VM size](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general) `Basic_A2`. Basically, I needed to deploy nodes that support premium storage - doh.
+    For instance, I didn't understand the different Azure storage tiers at the time, and when I tried to deploy OpenShift... The pods backed by persistent storage failed since `Premium_LRS` is not supported for [VM size](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general) `Basic_A2`. Basically, I needed to deploy nodes that support premium storage - doh.
 
     The point is, I could have saved myself some time if I had either broken the ARM template into multiple small subsections that got assembled post- modification, or Googled for a tool that I could use to update the template and redeploy from afterwards.
 
