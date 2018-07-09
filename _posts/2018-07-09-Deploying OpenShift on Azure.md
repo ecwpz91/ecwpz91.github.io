@@ -14,47 +14,43 @@ Here are a few things you should consider prior to trying it out yourself.
 
 1. [Azure free account](https://azure.microsoft.com/en-us/free/)
 
-  Requires a valid credit card to sign register - gift cards not accepted #wompwomp
+    Requires a valid credit card to sign register - gift cards not accepted #wompwomp
 
-  Also, [free trial subscriptions are not eligible for limit or quota increases](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quota-errors).
+    Also, [free trial subscriptions are not eligible for limit or quota increases](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quota-errors).
 
 2. Create a resource group
 
-  See StackOverflow post on [not able to set same name for Azure key Vault in different subscription](https://stackoverflow.com/questions/37563126/not-able-to-set-same-name-for-azure-key-vault-in-different-subscription).
+    See StackOverflow post on [not able to set same name for Azure key Vault in different subscription](https://stackoverflow.com/questions/37563126/not-able-to-set-same-name-for-azure-key-vault-in-different-subscription).
 
-  The solution in my case was to register a missing resource provider, like so:
+    The solution in my case was to register a missing resource provider, like so:
 
-  ```sh
-  az provider register --namespace Microsoft.KeyVault
-  ```
+         az provider register --namespace Microsoft.KeyVault
 
 3. [Create a service principal](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#create-a-service-principal)
 
-  Role assignment creation failed because the original scopes `az group show --name keyvaultrg --query id` command includes quotation marks.
+    Role assignment creation failed because the original scopes `az group show --name keyvaultrg --query id` command includes quotation marks.
 
-  Also, there is no need to include the `--password` parameter if this is the first time you’re provisioning. As in, Azure will auto generate the password for you.
+    Also, there is no need to include the `--password` parameter if this is the first time you’re provisioning. As in, Azure will auto generate the password for you.
 
-  This is the command I used on an installation of RHEL/CentOS:
+    This is the command I used on an installation of RHEL/CentOS:
 
-  ```sh
-  az ad sp create-for-rbac --name openshift --role contributor --scopes $(az group show --name keyvaultrg --query id | sed -e 's/\"\(.*\)\"/\1/')
-  ```
+         az ad sp create-for-rbac --name openshift --role contributor --scopes $(az group show --name keyvaultrg --query id | sed -e 's/\"\(.*\)\"/\1/')
 
 4. [Missing authorization to perform action](https://blogs.msdn.microsoft.com/azure4fun/2016/10/20/common-problem-when-using-azure-resource-groups-rbac/)
 
-  I needed fix RBAC by adding `Microsoft.Resources/subscriptions/resourcegroups/read` to my account.
+    I needed fix RBAC by adding `Microsoft.Resources/subscriptions/resourcegroups/read` to my account.
 
 5. Consider using a tool to generate Azure ARM templates
 
-  The JSON templates provided out-of-the-box by Microsoft deploy 1x bastion, 3x master, 3x infra, 3x app nodes.
+    The JSON templates provided out-of-the-box by Microsoft deploy 1x bastion, 3x master, 3x infra, 3x app nodes.
 
-  But, for purposes of a small proof-of-concept (POC) environment I needed something a little smaller. So I began hacking away _manually_.
+    But, for purposes of a small proof-of-concept (POC) environment I needed something a little smaller. So I began hacking away _manually_.
 
-  Hindsight is 20/20, and if you are an OpenShift guru, but not an Azure expert... Expect to find post- deployment issues with things like storage provisioning.
+    Hindsight is 20/20, and if you are an OpenShift guru, but not an Azure expert... Expect to find post- deployment issues with things like storage provisioning.
 
-  For instance, I didn't understand the different Azure storage tiers, and when I tried to deploy OpenShift and afterwards the pods backed by persistent storage it'll failed since `Premium_LRS` is not supported for [VM size](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general) `Basic_A2`.
+    For instance, I didn't understand the different Azure storage tiers, and when I tried to deploy OpenShift and afterwards the pods backed by persistent storage it'll failed since `Premium_LRS` is not supported for [VM size](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general) `Basic_A2`.
 
-  Basically, I needed to deploy nodes that support premo storage - doh.
+    Basically, I needed to deploy nodes that support premo storage - doh.
 
 # Summary
 
