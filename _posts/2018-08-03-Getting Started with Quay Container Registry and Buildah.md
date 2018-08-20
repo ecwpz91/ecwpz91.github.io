@@ -34,11 +34,11 @@ The following describes the process of trying out Quay Container Registry and Bu
 
     On RHEL 7.4, I was unable to `make` Buildah using `go version go1.3.3 linux/amd64`, so I prioritized `~/.local/bin` over `/usr/bin`.
 
-    First, install Golang outside of 'yum' package manager
+    First, install Golang outside of 'yum' package manager.
 
         $ curl -L 'https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz' | tar -xvzf - -C $HOME/.local --strip 1 &>/dev/null
 
-    Then setup the environment to [manage projects and public packages independently](https://www.ardanlabs.com/blog/2013/08/organizing-code-to-support-go-get.html)
+    Then setup the environment to [manage projects and public packages independently](https://www.ardanlabs.com/blog/2013/08/organizing-code-to-support-go-get.html).
 
         $ cat <<EOF >>~/.bashrc
         export GOROOT=$HOME/.local
