@@ -57,7 +57,7 @@ The following describes the process of trying out Quay Container Registry and Bu
 
         $ go get github.com/cpuguy83/go-md2man
 
-6. [Install Buildah](https://github.com/projectatomic/buildah/blob/master/install.md#rhel-centos)
+5. [Install Buildah](https://github.com/projectatomic/buildah/blob/master/install.md#rhel-centos)
 
         $ mkdir ~/buildah
         $ cd ~/buildah
@@ -68,7 +68,7 @@ The following describes the process of trying out Quay Container Registry and Bu
         $ sudo make install
         $ buildah --help
 
-7. Create a [Quay.io](https://quay.io/) user account
+6. Create a [Quay.io](https://quay.io/) user account
 
     In order to be able to log into Quay Container Registry using the Docker CLI you need to create a user account first.
 
@@ -76,11 +76,11 @@ The following describes the process of trying out Quay Container Registry and Bu
 
     ¯\\_(ツ)_/¯
 
-8. Create a Docker CLI Password
+7. Create a Docker CLI Password
 
     Go to your Quay account settings page and create an encrypted password for more security.
 
-9. Sign into Quay.io
+8. Sign into Quay.io
 
     To sign into Quay.io, execute the docker login quay.io command:
 
@@ -88,21 +88,21 @@ The following describes the process of trying out Quay Container Registry and Bu
         Username: myusername
         Password: myencryptedpassword
 
-10. Create a new container
+9. Create a new container
 
     First we’ll create a container with a single new file based off of the CentOS base image:
 
         # ctr1=`buildah from ${1:-docker.io/centos}`
         # buildah run $ctr1 -- /bin/bash -c 'echo "Hello Buildah!" >> /tmp/newfile'
 
-11. Use `buildah containers` to list running containers:
+10. Use `buildah containers` to list running containers:
 
         CONTAINER ID  BUILDER  IMAGE ID     IMAGE NAME                       CONTAINER NAME
         71d3440c6064     *     5182e96772bf docker.io/library/centos:latest  centos-working-container
 
     Make note of the **container id**; we’ll need it for the commit command.
 
-12. Tag the container to an image
+11. Tag the container to an image
 
     We next need to tag the container to a known image name
 
@@ -119,14 +119,14 @@ The following describes the process of trying out Quay Container Registry and Bu
         Storing signatures
         ae853012674b8421cd3155a29a5e28c01660c3eff1309309ba3f23d973006a4c
 
-13. Get the image ID
+12. Get the image ID
 
         # buildah images
         IMAGE ID             IMAGE NAME                                               CREATED AT             SIZE
         5182e96772bf         docker.io/library/centos:latest                          Aug 6, 2018 15:21      208 MB
         ae853012674b         quay.io/myusername/echofun:latest                           Aug 20, 2018 15:10     208 MB
 
-14. Push the image to Quay.io
+13. Push the image to Quay.io
 
         # buildah push --authfile /home/username/.docker/config.json ae853012674b docker://quay.io/myusername/echofun:latest
         Getting image source signatures
@@ -143,13 +143,13 @@ The following describes the process of trying out Quay Container Registry and Bu
         Writing manifest to image destination
         Storing signatures
 
-15. Pull the image from Quay.io using Docker
+14. Pull the image from Quay.io using Docker
 
     A docker pull could be used to update the repository locally
 
         $ docker pull quay.io/myusername/echofun
 
-16. Run the image locally in order to verify the the `/tmp/newfile` exists
+15. Run the image locally in order to verify the the `/tmp/newfile` exists
 
         $ docker run -detach --name echofun quay.io/myusername/echofun sh -c 'while true; do sleep 1000; done'
         $ docker exec -it echofun /bin/bash
