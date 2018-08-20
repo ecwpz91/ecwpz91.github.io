@@ -34,13 +34,13 @@ The following describes the process of trying out Quay Container Registry and Bu
 
     On RHEL 7.4, I was unable to `make` Buildah using `go version go1.3.3 linux/amd64`, so I prioritized `~/.local/bin` over `/usr/bin`.
 
-        # Install Golang outside of 'yum' package manager
-        curl -L 'https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz' | tar -xvzf - -C $HOME/.local --strip 1 &>/dev/null
+    First, install Golang outside of 'yum' package manager
 
-        # Setup environment to manage projects and public packages independently
-        See https://www.ardanlabs.com/blog/2013/08/organizing-code-to-support-go-get.html
+        $ curl -L 'https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz' | tar -xvzf - -C $HOME/.local --strip 1 &>/dev/null
 
-        cat <<EOF >>~/.bashrc
+    Then setup the environment to [manage projects and public packages independently](https://www.ardanlabs.com/blog/2013/08/organizing-code-to-support-go-get.html)
+
+        $ cat <<EOF >>~/.bashrc
         export GOROOT=$HOME/.local
         export GOPATH=$HOME/.go/Projects
         export GOPATH=$HOME/.go/PublicPackages:$GOPATH
@@ -55,18 +55,18 @@ The following describes the process of trying out Quay Container Registry and Bu
 
 4. Prefer to use upstream `go-md2man` (source of Buildah issues mentioned in Step 2).
 
-        go get github.com/cpuguy83/go-md2man
+        $ go get github.com/cpuguy83/go-md2man
 
 6. [Install Buildah](https://github.com/projectatomic/buildah/blob/master/install.md#rhel-centos)
 
-        mkdir ~/buildah
-        cd ~/buildah
-        export GOPATH=`pwd`
-        git clone https://github.com/projectatomic/buildah ./src/github.com/projectatomic/buildah
-        cd ./src/github.com/projectatomic/buildah
-        make
-        sudo make install
-        buildah --help
+        $ mkdir ~/buildah
+        $ cd ~/buildah
+        $ export GOPATH=`pwd`
+        $ git clone https://github.com/projectatomic/buildah ./src/github.com/projectatomic/buildah
+        $ cd ./src/github.com/projectatomic/buildah
+        $ make
+        $ sudo make install
+        $ buildah --help
 
 7. Create a [Quay.io](https://quay.io/) user account
 
