@@ -100,13 +100,13 @@ The following describes the process of trying out Quay Container Registry and Bu
         CONTAINER ID  BUILDER  IMAGE ID     IMAGE NAME                       CONTAINER NAME
         71d3440c6064     *     5182e96772bf docker.io/library/centos:latest  centos-working-container
 
-   Make note of the **container id**; we’ll need it for the commit command.
+    Make note of the **container id**; we’ll need it for the commit command.
 
 12. Tag the container to an image
 
-   We next need to tag the container to a known image name
+    We next need to tag the container to a known image name
 
-   Note that the username must be your Quay.io username and reponame is the new name of your repository.
+    Note that the username must be your Quay.io username and reponame is the new name of your repository.
 
         # buildah commit 71d3440c6064 quay.io/myusername/echofun
         Getting image source signatures
@@ -145,7 +145,7 @@ The following describes the process of trying out Quay Container Registry and Bu
 
 15. Pull the image from Quay.io using Docker
 
-   A docker pull could be used to update the repository locally
+    A docker pull could be used to update the repository locally
 
         $ docker pull quay.io/myusername/echofun
 
