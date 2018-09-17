@@ -166,7 +166,7 @@ The following describes some command line utilities encountered when dealing wit
 
     Unmount the device.
 
-         unmount /dev/sdb
+         umount /dev/sdb
 
     Backup the first megabyte of raw blocks of the device.
 
