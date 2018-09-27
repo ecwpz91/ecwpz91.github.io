@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Getting Started with Quay Container Registry and Buildah"
+title: "Getting Started with Quay and Buildah"
 date: "2018-08-20 14:00"
 ---
 
