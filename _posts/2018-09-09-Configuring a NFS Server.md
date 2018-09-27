@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "Configuring a NFS Server"
-date: "2018-09-09 09:28"
+date: "2018-27-09 09:28"
 ---
 
 # Problem
