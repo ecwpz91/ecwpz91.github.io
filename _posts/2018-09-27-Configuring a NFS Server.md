@@ -75,7 +75,8 @@ The following describes the process of configuring NFS using an installation of 
 
 1. Attempt to access the NFS server
 
-        NFS_SERVER="" && showmount -e $NFS_SERVER
+        NFS_SERVER="" \
+        && showmount -e $NFS_SERVER
 
 2. Create the mount point
 
@@ -83,7 +84,8 @@ The following describes the process of configuring NFS using an installation of 
 
 3. Create an `/etc/fstab` entry for the NFS server
 
-        NFS_SERVER="" && echo "$NFS_SERVER:/srv/nfsexport /mnt/nfsshare nfs defaults 0 0" >> /etc/exports
+        NFS_SERVER="" \
+        && echo "$NFS_SERVER:/srv/nfsexport /mnt/nfsshare nfs defaults 0 0" >> /etc/exports
 
 4. Mount the exported NFS share directory
 
