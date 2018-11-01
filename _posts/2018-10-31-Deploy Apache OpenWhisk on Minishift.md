@@ -78,6 +78,8 @@ The following describes the process of deploying Apache OpenWhisk on [Red Hat Co
 
     Note that the `--insecure` option avoids the validation error triggered by the self-signed cert in the nginx service.
 
+13. Check out [Getting started with OpenWhisk](https://github.com/apache/incubator-openwhisk/blob/master/docs/README.md).
+
 # Summary
 
 OpenWhisk is an [Apache Incubator Project](https://incubator.apache.org/projects/openwhisk.html) that is [largely credited to IBM for seeding](https://en.wikipedia.org/wiki/Bluemix). It is an open source implementation of a cloud-first distributed event-based programming service that allows calling of a specific function in response to an event without requiring any resource management from the developer ([serverless](https://martinfowler.com/articles/serverless.html) platform).
