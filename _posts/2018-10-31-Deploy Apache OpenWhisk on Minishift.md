@@ -82,6 +82,6 @@ The following describes the process of deploying Apache OpenWhisk on [Red Hat Co
 
 # Summary
 
-OpenWhisk is an [Apache Incubator Project](https://incubator.apache.org/projects/openwhisk.html) that is [largely credited to IBM for seeding](https://en.wikipedia.org/wiki/Bluemix). It is an open source implementation of a cloud-first distributed event-based programming service that allows calling of a specific function in response to an event without requiring any resource management from the developer ([serverless](https://martinfowler.com/articles/serverless.html) platform).
+OpenWhisk is [largely credited to IBM for seeding](https://en.wikipedia.org/wiki/Bluemix). It is an open source implementation of a cloud-first distributed event-based programming service that allows calling of a specific function in response to an event without requiring any resource management from the developer.
 
 Click [here](https://github.com/apache/incubator-openwhisk-external-resources) to see a curated list of awesome OpenWhisk things.
