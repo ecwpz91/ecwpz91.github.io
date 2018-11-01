@@ -58,7 +58,7 @@ The following describes the process of deploying Apache OpenWhisk on [Red Hat Co
         TEMPLATE_PARAMS="INVOKER_MEMORY_REQUEST=512Mi INVOKER_MEMORY_LIMIT=512Mi INVOKER_JAVA_OPTS=-Xmx256m INVOKER_MAX_CONTAINERS=2 COUCHDB_MEMORY_REQUEST=256Mi COUCHDB_MEMORY_LIMIT=256Mi" \
         && oc process -f https://git.io/openwhisk-template $TEMPLATE_PARAMS | oc create -f -
 
-9. Install OpenWhisk CLI (wsk).
+9. Install OpenWhisk CLI ([wsk](https://github.com/apache/incubator-openwhisk-cli/blob/master/README.md)).
 
         sudo /bin/bash -c 'curl -L 'http://bit.ly/2DdLSPF' | tar -xvzf - -C /bin wsk &>/dev/null'
 
@@ -67,7 +67,7 @@ The following describes the process of deploying Apache OpenWhisk on [Red Hat Co
         AUTH_SECRET=$(oc get secret whisk.auth -o yaml | grep "system:" | awk '{print $2}' | base64 --decode) \
         && wsk property set --auth $AUTH_SECRET --apihost $(oc get route/openwhisk --template="{{.spec.host}}")
 
-11. Install Whisk Deploy (wskdeploy) to help deploy and manage all your OpenWhisk Packages, Actions, Triggers, Rules and APIs using a single command.
+11. Install Whisk Deploy ([wskdeploy](https://github.com/apache/incubator-openwhisk-wskdeploy/blob/master/README.md)) to help deploy and manage all your OpenWhisk Packages, Actions, Triggers, Rules and APIs using a single command.
 
         sudo /bin/bash -c 'curl -L 'http://bit.ly/2CWlidd' | tar -xvzf - -C /bin wskdeploy &>/dev/null'
 
@@ -84,4 +84,4 @@ The following describes the process of deploying Apache OpenWhisk on [Red Hat Co
 
 OpenWhisk is [largely credited to IBM for seeding](https://en.wikipedia.org/wiki/Bluemix). It is an open source implementation of a cloud-first distributed event-based programming service that allows calling of a specific function in response to an event without requiring any resource management from the developer.
 
-Click [here](https://github.com/apache/incubator-openwhisk-external-resources) to see a curated list of awesome OpenWhisk things.
+Click [here](https://github.com/apache/incubator-openwhisk-external-resources) to see a curated list of awesome OpenWhisk things!
