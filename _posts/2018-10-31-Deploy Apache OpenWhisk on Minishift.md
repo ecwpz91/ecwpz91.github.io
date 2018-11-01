@@ -67,7 +67,7 @@ The following describes the process of deploying Apache OpenWhisk on [Red Hat Co
         AUTH_SECRET=$(oc get secret whisk.auth -o yaml | grep "system:" | awk '{print $2}' | base64 --decode) \
         && wsk property set --auth $AUTH_SECRET --apihost $(oc get route/openwhisk --template="{{.spec.host}}")
 
-11. Optionally, install Whisk Deploy ([wskdeploy](https://github.com/apache/incubator-openwhisk-wskdeploy/blob/master/README.md)) to help deploy and manage all your OpenWhisk [Packages, Actions, Triggers, Rules and APIs](https://github.com/apache/incubator-openwhisk/tree/master/docs) using a single command.
+11. Optionally, install Whisk Deploy ([wskdeploy](https://github.com/apache/incubator-openwhisk-wskdeploy/blob/master/README.md)) to help deploy and manage all your OpenWhisk [Packages](https://github.com/apache/incubator-openwhisk/blob/master/docs/packages.md), [Actions](https://github.com/apache/incubator-openwhisk/blob/master/docs/actions.md), [APIs](https://github.com/apache/incubator-openwhisk/blob/master/docs/rest_api.md), [Triggers and Rules](https://github.com/apache/incubator-openwhisk/blob/master/docs/triggers_rules.md) using a single command.
 
         sudo /bin/bash -c 'curl -L 'http://bit.ly/2CWlidd' | tar -xvzf - -C /bin wskdeploy &>/dev/null'
 
