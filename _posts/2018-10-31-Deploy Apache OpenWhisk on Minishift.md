@@ -60,7 +60,7 @@ The following describes the process of deploying Apache OpenWhisk on [Red Hat Co
 
 9. Install OpenWhisk CLI ([wsk](https://github.com/apache/incubator-openwhisk-cli/blob/master/README.md)).
 
-        sudo /bin/bash -c 'curl -L 'http://bit.ly/2DdLSPF' | tar -xvzf - -C /bin wsk &>/dev/null'
+        sudo /bin/bash -c 'curl -L 'http://bit.ly/2Fl0Pl0' | tar -xvzf - -C /bin wsk &>/dev/null'
 
 10. Config `wsk` CLI Authentication
 
