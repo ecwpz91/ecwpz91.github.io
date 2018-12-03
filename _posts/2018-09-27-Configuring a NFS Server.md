@@ -16,7 +16,7 @@ The following describes the process of configuring NFS using an installation of 
 
 # Solution
 
-## Set up the NFS server
+### Setup NFS Server
 
 1. Install required utilities for NFS
 
@@ -71,7 +71,7 @@ The following describes the process of configuring NFS using an installation of 
 
         showmount -e localhost
 
-## Set up the NFS client
+### Setup NFS Client
 
 1. Attempt to access the NFS server
 
