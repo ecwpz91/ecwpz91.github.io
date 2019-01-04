@@ -4,7 +4,6 @@ description: > # this means to ignore newlines until "baseurl:"
   on topics I see as noteworthy. Enjoy!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: ecwpz91
 github_username: ecwpz91
 pinboard_username: msurbey
 linkedin_username: msurbey
