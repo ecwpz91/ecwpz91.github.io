@@ -55,8 +55,8 @@ Use Podman to quickly build and deploy Dashbuilder onto Wildfly.
 
 7. Download the Dashbuilder builder source code.
 
-       curl -L 'https://github.com/kiegroup/appformer/archive/7.43.1.Final.tar.gz' \
-       | tar -xzf - -C "$HOME/Downloads" appformer-7.43.1.Final/dashbuilder --strip 1
+        curl -L 'https://github.com/kiegroup/appformer/archive/7.43.1.Final.tar.gz' \
+        | tar -xzf - -C "$HOME/Downloads" appformer-7.43.1.Final/dashbuilder --strip 1
 
        
 8. Change directory to location of downloaded Dashbuilder source code.
@@ -65,7 +65,7 @@ Use Podman to quickly build and deploy Dashbuilder onto Wildfly.
 
 9. Package the source code as a WAR file using maven.
 
-       mvn clean install -DskipTests -Dfull
+        mvn clean install -DskipTests -Dfull
 
     Once build is finished, you'll find the WAR distributions for Wildfly in `dashbuilder-distros/target/dashbuilder-1.0.0.Final-wildfly10.war`.
 
@@ -77,23 +77,21 @@ Use Podman to quickly build and deploy Dashbuilder onto Wildfly.
 
 11. Use `podman` to build an image using local Containerfile.
 
-       podman build -t dashbuilder -f Containerfile .
+        podman build -t dashbuilder -f Containerfile .
 
 12. Run image locally and boot in standalone mode with admin console available remotely.
 
-       podman run --publish 8080:8080 --publish 9990:9990 -detach --name dashbuilder localhost/dashbuilder sh -c '/opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0'
+        podman run --publish 8080:8080 --publish 9990:9990 -detach --name dashbuilder localhost/dashbuilder sh -c '/opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0'
 
 13. Create an create a management user in the Default Realm for the management console at http://localhost:9990.
 
-       podman exec -it dashbuilder /opt/jboss/wildfly/bin/add-user.sh -u 'adminuser' -p 'password1'
+        podman exec -it dashbuilder /opt/jboss/wildfly/bin/add-user.sh -u 'adminuser' -p 'password1'
 
 14. Create an Application user belonging to a single group:
 
-       podman exec -it dashbuilder /opt/jboss/wildfly/bin/add-user.sh -a -u 'appuser1' -p 'password1!' -g 'admin'
+        podman exec -it dashbuilder /opt/jboss/wildfly/bin/add-user.sh -a -u 'appuser1' -p 'password1!' -g 'admin'
 
-15. Once application started, navigate to:
-
-       http://localhost:8080/dashbuilder-7.43.1.Final-wildfly10
+15. Once application started, navigate to http://localhost:8080/dashbuilder-7.43.1.Final-wildfly10.
 
     Note use the Application user created in Step #8 to login to Dashboard Builder.
 
