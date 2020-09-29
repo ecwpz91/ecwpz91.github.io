@@ -12,8 +12,7 @@ The following describes the process of deploying [Dashbuilder](https://github.co
 
 Use Podman to quickly build and deploy Dashbuilder onto Wildfly.
 
-1. Open a terminal and type the command `su -` to login as root user.
-2. Get the most current version of all packages and podman.
+1. Get the most current version of all packages and podman.
 
         sudo dnf clean all
         sudo rm -rf /var/cache/dnf/*
@@ -22,20 +21,20 @@ Use Podman to quickly build and deploy Dashbuilder onto Wildfly.
         sudo dnf autoremove -y
         sudo dnf install -y slirp4netns podman
 
-3. To increase the number of user namespaces in the kernel, type the following:
+2. To increase the number of user namespaces in the kernel, type the following:
 
         sudo echo "user.max_user_namespaces=28633" > /etc/sysctl.d/userns.conf
         sudo sysctl -p /etc/sysctl.d/userns.conf
 
     Note that the user you're logged in as is automatically configured to be able to use rootless podman.
 
-4. Check which version of Java is installed.
+3. Check which version of Java is installed.
 
         java -version
 
     Note WildFly 19 is heavily tested and runs well on Java 8.
 
-5. Dashbuilder requires Maven 3.6.3 (or greater). At the time of this post, this release of Maven is not yet provided by the default package manager repositories and therefore I need to install and add to the environment PATH manually. For your convenience you can source the following custom bash script and issue the command `install-maven` to automate the installation process, or use this [Ansible Galaxy role](https://github.com/gantsign/ansible-role-maven) too.
+4. Dashbuilder requires Maven 3.6.3 (or greater). At the time of this post, this release of Maven is not yet provided by the default package manager repositories and therefore I need to install and add to the environment PATH manually. For your convenience you can source the following custom bash script and issue the command `install-maven` to automate the installation process, or use this [Ansible Galaxy role](https://github.com/gantsign/ansible-role-maven) too.
 
        #!/bin/bash
        install-maven() {
@@ -49,49 +48,48 @@ Use Podman to quickly build and deploy Dashbuilder onto Wildfly.
 
     Note that my [.bashrc](https://tldp.org/LDP/abs/html/sample-bashrc.html) file contains the uer specific environment variable `PATH="$HOME/.local/bin:$HOME/bin:$PATH"` to load the local bin folder for binary files maintained outside of the native OS package manager. You can verify that `mvn` is loaded from this path by reloading the interactive shell environment (restarting the terminal) and typing the command `which mvn`. Also, you can find other mvn paths (check if installed globally) using the command `whereis mvn` to determine all locations of Maven.
 
-6. Check which version of Maven is installed.
+5. Check which version of Maven is installed.
 
         mvn -version
 
-7. Download the Dashbuilder builder source code.
+6. Download the Dashbuilder builder source code.
 
         curl -L 'https://github.com/kiegroup/appformer/archive/7.43.1.Final.tar.gz' \
         | tar -xzf - -C "$HOME/Downloads" appformer-7.43.1.Final/dashbuilder --strip 1
 
-       
-8. Change directory to location of downloaded Dashbuilder source code.
+7. Change directory to location of downloaded Dashbuilder source code.
 
         cd $HOME/Downloads/dashbuilder
 
-9. Package the source code as a WAR file using maven.
+8. Package the source code as a WAR file using maven.
 
         mvn clean install -DskipTests -Dfull
 
     Once build is finished, you'll find the WAR distributions for Wildfly in `dashbuilder-distros/target/dashbuilder-1.0.0.Final-wildfly10.war`.
 
-10. Create the local Containerfile to build containers and define reproducible image recipes. In other words, create a file named `Containerfile` with the following contents:
+9. Create the local Containerfile to build containers and define reproducible image recipes. In other words, create a file named `Containerfile` with the following contents:
 
         FROM jboss/wildfly:19.1.0.Final
         ADD dashbuilder-distros/target/dashbuilder-7.43.1.Final-wildfly10.war /opt/jboss/wildfly/standalone/deployments/
         CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
 
-11. Use `podman` to build an image using local Containerfile.
+10. Use `podman` to build an image using local Containerfile.
 
         podman build -t dashbuilder -f Containerfile .
 
-12. Run image locally and boot in standalone mode with admin console available remotely.
+11. Run image locally and boot in standalone mode with admin console available remotely.
 
         podman run --publish 8080:8080 --publish 9990:9990 -detach --name dashbuilder localhost/dashbuilder sh -c '/opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0'
 
-13. Create an create a management user in the Default Realm for the management console at `http://localhost:9990`.
+12. Create an create a management user in the Default Realm for the management console at `http://localhost:9990`.
 
         podman exec -it dashbuilder /opt/jboss/wildfly/bin/add-user.sh -u 'adminuser' -p 'password1'
 
-14. Create an Application user belonging to a single group:
+13. Create an Application user belonging to a single group:
 
         podman exec -it dashbuilder /opt/jboss/wildfly/bin/add-user.sh -a -u 'appuser1' -p 'password1!' -g 'admin'
 
-15. Once application started, navigate to `http://localhost:8080/dashbuilder-7.43.1.Final-wildfly10`.
+14. Once application started, navigate to `http://localhost:8080/dashbuilder-7.43.1.Final-wildfly10`.
 
     Note use the Application user created in Step #14 to login to Dashboard Builder.
 
