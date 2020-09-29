@@ -46,7 +46,7 @@ Use Podman to quickly build and deploy Dashbuilder onto Wildfly.
          ln -s "$HOME/.local/share/maven/bin/mvn" "$HOME/.local/bin/mvn"
        }
 
-    Note that my [.bashrc](https://tldp.org/LDP/abs/html/sample-bashrc.html) file contains the uer specific environment variable `PATH="$HOME/.local/bin:$HOME/bin:$PATH"` to load the local bin folder for binary files maintained outside of the native OS package manager. You can verify that `mvn` is loaded from this path by reloading the interactive shell environment (restarting the terminal) and typing the command `which mvn`. Also, you can find other mvn paths (check if installed globally) using the command `whereis mvn` to determine all locations of Maven.
+    Note that my [.bashrc](https://tldp.org/LDP/abs/html/sample-bashrc.html) file contains the user specific environment variable `PATH="$HOME/.local/bin:$HOME/bin:$PATH"` to load the local bin folder for binary files maintained outside of the native OS package manager. You can verify that `mvn` is loaded from this path by reloading the interactive shell environment (restarting the terminal) and typing the command `which mvn`. Also, you can find other mvn paths (check if installed globally) using the command `whereis mvn` to determine all locations of Maven.
 
 5. Check which version of Maven is installed.
 
@@ -108,4 +108,4 @@ Dashbuilder is a general purpose dashboard and reporting web app which allows fo
 
 Check out the link to the video above where you go through the process of uploading and creating some really cool dashboards.
 
-Thanks, and remember Knowledge is Everything (KIE)!
+Thanks, and remember Knowledge Is Everything (KIE)!
