@@ -69,9 +69,8 @@ Use Podman to quickly build and deploy Dashbuilder onto Wildfly.
 
     Once build is finished, you'll find the WAR distributions for Wildfly in `dashbuilder-distros/target/dashbuilder-1.0.0.Final-wildfly10.war`.
 
-8. Create the local Containerfile to build containers and define reproducible image recipes.
+8. Create the local Containerfile to build containers and define reproducible image recipes. In other words, create a file named `Containerfile` with the following contents:
 
-        # Create file named `Containerfile` with the following contents:
         FROM jboss/wildfly:19.1.0.Final
         ADD dashbuilder-distros/target/dashbuilder-7.43.1.Final-wildfly10.war /opt/jboss/wildfly/standalone/deployments/
         CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
