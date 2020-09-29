@@ -83,7 +83,7 @@ Use Podman to quickly build and deploy Dashbuilder onto Wildfly.
 
         podman run --publish 8080:8080 --publish 9990:9990 -detach --name dashbuilder localhost/dashbuilder sh -c '/opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0'
 
-13. Create an create a management user in the Default Realm for the management console at http://localhost:9990.
+13. Create an create a management user in the Default Realm for the management console at `http://localhost:9990`.
 
         podman exec -it dashbuilder /opt/jboss/wildfly/bin/add-user.sh -u 'adminuser' -p 'password1'
 
@@ -91,9 +91,9 @@ Use Podman to quickly build and deploy Dashbuilder onto Wildfly.
 
         podman exec -it dashbuilder /opt/jboss/wildfly/bin/add-user.sh -a -u 'appuser1' -p 'password1!' -g 'admin'
 
-15. Once application started, navigate to http://localhost:8080/dashbuilder-7.43.1.Final-wildfly10.
+15. Once application started, navigate to `http://localhost:8080/dashbuilder-7.43.1.Final-wildfly10`.
 
-    Note use the Application user created in Step #8 to login to Dashboard Builder.
+    Note use the Application user created in Step #14 to login to Dashboard Builder.
 
 # Summary
 
