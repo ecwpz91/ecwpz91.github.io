@@ -16,7 +16,6 @@ Use Podman to quickly build and deploy Dashbuilder onto Wildfly.
 
         sudo dnf clean all
         sudo rm -rf /var/cache/dnf/*
-        sudo dnf makecache fast
         sudo dnf update -y
         sudo dnf autoremove -y
         sudo dnf install -y slirp4netns podman
