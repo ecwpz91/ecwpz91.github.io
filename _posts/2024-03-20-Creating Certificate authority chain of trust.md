@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Creating Certificate authority chain of trust with OpenSSL"
+title: "Creating Certificate Authority Chain of Trust with OpenSSL"
 date: "2024-03-20 14:15"
 ---
 
