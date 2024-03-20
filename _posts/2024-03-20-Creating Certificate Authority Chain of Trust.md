@@ -6,7 +6,7 @@ date: "2024-03-20 14:15"
 
 # Problem
 
-The Certificate signing request flow is a complicated process that involves an end-entity certificate, intermediate certificate, and certificate authority.
+The certificate signing request flow is a complicated process that involves an end-entity certificate, intermediate certificate, and certificate authority.
 
 The following describes how they all work together in order to create a chain of trust.
 
