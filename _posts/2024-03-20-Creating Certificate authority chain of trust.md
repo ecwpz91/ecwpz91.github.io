@@ -199,12 +199,17 @@ The following describes how they all work together in order to create a chain of
         A challenge password []:
         An optional company name []:
 
-20. Issue the end-entity certificate.
+20. Verify the end-entity certificate CSR and change permissions of the CSR.
+
+        chmod 0444 csr/example.com.csr.pem
+        openssl req -in csr/example.com.csr.pem -noout -text
+
+21. Issue the end-entity certificate.
 
         openssl ca -config openssl.cnf -notext -md sha256 -extensions end_entity_cert -days 365 -in csr/example.com.csr.pem -out certs/example.com.cert.pem
         chmod 0444 certs/example.com.cert.pem
 
-21. Verify the certificate against the chained certificate.
+22. Verify the certificate against the chained certificate.
 
         openssl verify -CAfile certs/ca-chain.cert.pem certs/example.com.cert.pem
 
